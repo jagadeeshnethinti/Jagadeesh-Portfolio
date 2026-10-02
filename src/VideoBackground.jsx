@@ -71,7 +71,7 @@ export default function VideoBackground() {
         y: Math.random() * height,
         vx: (Math.random() - 0.5) * 0.45,
         vy: (Math.random() - 0.5) * 0.45,
-        radius: Math.random() * 2 + 1.2,
+        radius: Math.random() * 1.8 + 1.0,
         pulse: Math.random() * Math.PI * 2,
         pulseSpeed: 0.02 + Math.random() * 0.03,
       })
@@ -121,7 +121,7 @@ export default function VideoBackground() {
         }
 
         n.pulse += n.pulseSpeed
-        const alpha = 0.35 + Math.sin(n.pulse) * 0.25
+        const alpha = 0.32 + Math.sin(n.pulse) * 0.18
 
         // Draw node core
         ctx.beginPath()
@@ -132,9 +132,9 @@ export default function VideoBackground() {
 
         // Draw subtle node halo
         ctx.beginPath()
-        ctx.arc(n.x, n.y, n.radius * 2.8, 0, Math.PI * 2)
+        ctx.arc(n.x, n.y, n.radius * 2.6, 0, Math.PI * 2)
         ctx.fillStyle = secondaryColor
-        ctx.globalAlpha = alpha * 0.2
+        ctx.globalAlpha = alpha * 0.22
         ctx.fill()
 
         // Draw inter-node neural connections
@@ -146,7 +146,7 @@ export default function VideoBackground() {
           const maxDist = 125
 
           if (cdist < maxDist) {
-            const lineAlpha = (1 - cdist / maxDist) * 0.18
+            const lineAlpha = (1 - cdist / maxDist) * 0.14
             ctx.beginPath()
             ctx.moveTo(n.x, n.y)
             ctx.lineTo(n2.x, n2.y)

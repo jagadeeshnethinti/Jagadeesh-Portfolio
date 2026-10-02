@@ -408,9 +408,9 @@ ul { list-style: none; }
   height: 104%;
   object-fit: cover;
   display: block;
-  opacity: 1;
+  opacity: 0.76;
   mix-blend-mode: normal;
-  filter: var(--video-filter, brightness(1.05) contrast(1.1) saturate(1.2));
+  filter: var(--video-filter, brightness(0.92) contrast(1.1) saturate(1.15));
   pointer-events: none;
   transition: filter 0.6s ease, opacity 0.6s ease;
 }
@@ -425,7 +425,7 @@ ul { list-style: none; }
 .aurora {
   position: absolute;
   inset: -15%;
-  filter: blur(75px);
+  filter: blur(80px);
   pointer-events: none;
   z-index: 1;
 }
@@ -436,14 +436,14 @@ ul { list-style: none; }
   max-width: 780px;
   max-height: 780px;
   border-radius: 50%;
-  opacity: 0.22;
+  opacity: 0.18;
   mix-blend-mode: screen;
   will-change: transform;
 }
 .blob.b1 { background: radial-gradient(circle, var(--b1), transparent 64%); top: -6%; left: -4%; animation: drift1 22s ease-in-out infinite; }
 .blob.b2 { background: radial-gradient(circle, var(--b2), transparent 64%); top: 12%; right: -8%; animation: drift2 26s ease-in-out infinite; }
-.blob.b3 { background: radial-gradient(circle, var(--b3), transparent 64%); bottom: -12%; left: 16%; animation: drift3 30s ease-in-out infinite; opacity: 0.18; }
-.blob.b4 { background: radial-gradient(circle, var(--b4), transparent 64%); bottom: 6%; right: 14%; animation: drift1 28s ease-in-out infinite reverse; opacity: 0.16; }
+.blob.b3 { background: radial-gradient(circle, var(--b3), transparent 64%); bottom: -12%; left: 16%; animation: drift3 30s ease-in-out infinite; opacity: 0.16; }
+.blob.b4 { background: radial-gradient(circle, var(--b4), transparent 64%); bottom: 6%; right: 14%; animation: drift1 28s ease-in-out infinite reverse; opacity: 0.14; }
 @keyframes drift1 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(8%, 10%) scale(1.15); } }
 @keyframes drift2 { 0%,100% { transform: translate(0,0) scale(1.05); } 50% { transform: translate(-10%, 8%) scale(0.92); } }
 @keyframes drift3 { 0%,100% { transform: translate(0,0) scale(1); } 50% { transform: translate(6%, -10%) scale(1.2); } }
@@ -454,15 +454,15 @@ ul { list-style: none; }
   mix-blend-mode: screen;
   pointer-events: none;
   z-index: 2;
-  opacity: 0.22;
+  opacity: 0.18;
 }
 .bg-grid {
   position: absolute; inset: 0;
   z-index: 1;
   pointer-events: none;
   background-image:
-    linear-gradient(rgba(255, 255, 255, 0.035) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.035) 1px, transparent 1px);
+    linear-gradient(rgba(255, 255, 255, 0.032) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.032) 1px, transparent 1px);
   background-size: 54px 54px;
   mask-image: radial-gradient(120% 90% at 50% 30%, #000 45%, transparent 85%);
   -webkit-mask-image: radial-gradient(120% 90% at 50% 30%, #000 45%, transparent 85%);
@@ -479,13 +479,9 @@ ul { list-style: none; }
   inset: 0;
   pointer-events: none;
   z-index: 3;
-  background: linear-gradient(
-    180deg,
-    transparent 0%,
-    transparent 25%,
-    transparent 75%,
-    rgba(2, 6, 12, 0.8) 100%
-  );
+  background:
+    radial-gradient(ellipse 75% 65% at 50% 36%, rgba(3, 8, 18, 0.42) 0%, rgba(2, 6, 14, 0.18) 60%, transparent 100%),
+    linear-gradient(180deg, rgba(2, 6, 14, 0.35) 0%, transparent 20%, transparent 68%, rgba(2, 6, 14, 0.88) 100%);
 }
 
 /* vignette to deepen edges */
@@ -494,9 +490,9 @@ ul { list-style: none; }
   inset: 0;
   z-index: 1;
   pointer-events: none;
-  opacity: 0.08;
+  opacity: 0.28;
   background:
-    radial-gradient(130% 90% at 50% 35%, rgba(0, 0, 0, 0) 60%, rgba(2, 6, 14, 0.2) 82%, rgba(2, 6, 14, 0.65) 100%);
+    radial-gradient(135% 95% at 50% 35%, rgba(0, 0, 0, 0) 55%, rgba(2, 6, 14, 0.4) 80%, rgba(1, 3, 8, 0.75) 100%);
 }
 
 @keyframes spin { to { transform: rotate(360deg); } }
@@ -882,26 +878,27 @@ section, .section, header.hero, [id] {
   display: none;
 }
 
-/* Master Pure Glassmorphism Hero Card (Ultra-transparent crystal glass with clear background view) */
+/* Executive Obsidian-Glass Hero Card (Optical Acrylic) */
 .hero-glass-card {
   position: relative;
   width: 100%;
   background: linear-gradient(
-    145deg,
-    rgba(10, 22, 42, 0.28) 0%,
-    rgba(5, 12, 26, 0.38) 100%
+    155deg,
+    rgba(8, 16, 32, 0.65) 0%,
+    rgba(4, 10, 22, 0.74) 50%,
+    rgba(2, 7, 18, 0.80) 100%
   );
-  backdrop-filter: blur(7px) saturate(145%) contrast(104%);
-  -webkit-backdrop-filter: blur(7px) saturate(145%) contrast(104%);
-  border: 1px solid rgba(255, 255, 255, 0.32);
+  backdrop-filter: blur(28px) saturate(200%) contrast(105%);
+  -webkit-backdrop-filter: blur(28px) saturate(200%) contrast(105%);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   border-radius: 28px;
   padding: clamp(34px, 5vw, 54px) clamp(24px, 4.5vw, 50px);
   box-shadow:
-    0 24px 60px -15px rgba(0, 0, 0, 0.5),
-    0 0 35px -8px var(--accent-glow-subtle),
-    inset 0 1.5px 0 0 rgba(255, 255, 255, 0.5),
-    inset 0 0 24px rgba(255, 255, 255, 0.03),
-    inset 0 -1px 0 0 rgba(255, 255, 255, 0.12);
+    0 28px 70px -15px rgba(0, 0, 0, 0.75),
+    0 0 45px -10px var(--accent-glow-subtle),
+    inset 0 1px 0 0 rgba(255, 255, 255, 0.35),
+    inset 0 0 24px rgba(255, 255, 255, 0.02),
+    inset 0 -1px 0 0 rgba(255, 255, 255, 0.08);
   animation: fadeUp 0.8s cubic-bezier(0.16, 1, 0.3, 1) both;
   overflow: hidden;
   z-index: 2;
@@ -911,7 +908,7 @@ section, .section, header.hero, [id] {
   content: '';
   position: absolute;
   inset: 0;
-  background: radial-gradient(120% 80% at 16% 0%, rgba(255, 255, 255, 0.26) 0%, rgba(255, 255, 255, 0.03) 45%, transparent 70%);
+  background: radial-gradient(120% 80% at 16% 0%, rgba(255, 255, 255, 0.14) 0%, rgba(255, 255, 255, 0.02) 45%, transparent 70%);
   pointer-events: none;
 }
 
@@ -922,7 +919,7 @@ section, .section, header.hero, [id] {
   left: 0;
   right: 0;
   height: 1.5px;
-  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.9) 25%, var(--accent-primary) 50%, rgba(255, 255, 255, 0.6) 75%, transparent 100%);
+  background: linear-gradient(90deg, transparent 0%, rgba(255, 255, 255, 0.75) 25%, var(--accent-primary) 50%, rgba(255, 255, 255, 0.55) 75%, transparent 100%);
   pointer-events: none;
 }
 
@@ -947,8 +944,8 @@ section, .section, header.hero, [id] {
   font-weight: 700;
   padding: 7px 18px;
   border-radius: 999px;
-  background: rgba(4, 10, 22, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.28);
+  background: rgba(2, 6, 14, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.16);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
@@ -976,8 +973,8 @@ section, .section, header.hero, [id] {
   letter-spacing: 0.3px;
   padding: 7px 16px;
   border-radius: 999px;
-  background: rgba(4, 10, 22, 0.6);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(2, 6, 14, 0.62);
+  border: 1px solid rgba(255, 255, 255, 0.14);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   text-shadow: 0 1px 2px rgba(0, 0, 0, 0.9);
@@ -1098,11 +1095,11 @@ section, .section, header.hero, [id] {
 .hero-metric-card {
   padding: 16px 18px;
   border-radius: 16px;
-  background: rgba(3, 9, 20, 0.45);
-  border: 1px solid rgba(255, 255, 255, 0.22);
+  background: rgba(2, 6, 16, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
-  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.28);
+  box-shadow: 0 8px 24px -6px rgba(0, 0, 0, 0.5), inset 0 1px 0 rgba(255, 255, 255, 0.16);
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -1110,10 +1107,10 @@ section, .section, header.hero, [id] {
 }
 
 .hero-metric-card:hover {
-  background: rgba(6, 16, 32, 0.65);
-  border-color: rgba(255, 255, 255, 0.45);
+  background: rgba(4, 12, 28, 0.75);
+  border-color: rgba(255, 255, 255, 0.3);
   transform: translateY(-2px);
-  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.5), 0 0 18px var(--accent-glow-subtle);
+  box-shadow: 0 12px 30px -6px rgba(0, 0, 0, 0.6), 0 0 18px var(--accent-glow-subtle);
 }
 
 .hero-metric-card .metric-val {
@@ -1148,8 +1145,8 @@ section, .section, header.hero, [id] {
   gap: 12px;
   margin-top: 26px;
   padding: 14px 18px;
-  background: rgba(3, 8, 18, 0.42);
-  border: 1px solid rgba(255, 255, 255, 0.18);
+  background: rgba(2, 6, 16, 0.55);
+  border: 1px solid rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(8px);
   -webkit-backdrop-filter: blur(8px);
   border-radius: 16px;
