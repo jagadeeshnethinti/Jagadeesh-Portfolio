@@ -16,6 +16,13 @@ import {
   PowerBIIcon,
   FinanceCertIcon,
   DegreeIcon,
+  CloseIcon,
+  LayersNavIcon,
+  UserNavIcon,
+  CpuNavIcon,
+  BriefcaseNavIcon,
+  ChatNavIcon,
+  ChevronRightIcon,
 } from './Icons.jsx'
 
 const RESUME = '/Jagadeesh_Nethinti_Resume.pdf'
@@ -507,9 +514,16 @@ function useReveal() {
           }
         })
       },
-      { threshold: 0.18 }
+      { threshold: 0.01, rootMargin: '60px 0px 60px 0px' }
     )
-    els.forEach((el) => io.observe(el))
+    els.forEach((el) => {
+      const rect = el.getBoundingClientRect()
+      if (rect.top < window.innerHeight + 80 && rect.bottom > -80) {
+        el.classList.add('in')
+      } else {
+        io.observe(el)
+      }
+    })
     return () => io.disconnect()
   }, [])
 }
@@ -551,12 +565,12 @@ function useCardTilt() {
 }
 
 const NAV_LINKS = [
-  ['About', 'about'],
-  ['Telemetry', 'dashboards'],
-  ['Toolkit', 'skills'],
-  ['Experience', 'experience'],
-  ['Systems', 'projects'],
-  ['Contact', 'contact'],
+  ['About', 'about', UserNavIcon],
+  ['Telemetry', 'dashboards', PowerBIIcon],
+  ['Toolkit', 'skills', CpuNavIcon],
+  ['Experience', 'experience', BriefcaseNavIcon],
+  ['Systems', 'projects', LayersNavIcon],
+  ['Contact', 'contact', ChatNavIcon],
 ]
 
 const THEMES = [
@@ -662,13 +676,123 @@ function clearCustomColor() {
   props.forEach(p => doc.style.removeProperty(p))
 }
 
-function ThemePicker() {
-  const [open, setOpen] = useState(false)
-  const [theme, setTheme] = useState(() => {
+function useTheme() {
+  const [theme, setThemeState] = useState(() => {
     const saved = localStorage.getItem('bg-theme-v2')
     return VALID_THEME_KEYS.includes(saved) ? saved : 'water'
   })
-  const [customColor, setCustomColor] = useState(() => localStorage.getItem('custom-theme-color') || '#2fe0ff')
+  const [customColor, setCustomColorState] = useState(() => localStorage.getItem('custom-theme-color') || '#2fe0ff')
+
+  const setTheme = (newTheme) => {
+    setThemeState(newTheme)
+    if (newTheme === 'custom') {
+      document.documentElement.setAttribute('data-theme', 'custom')
+      applyCustomColor(customColor)
+    } else {
+      clearCustomColor()
+      document.documentElement.setAttribute('data-theme', newTheme)
+    }
+    localStorage.setItem('bg-theme-v2', newTheme)
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: newTheme } }))
+  }
+
+  const setCustomColor = (color) => {
+    setCustomColorState(color)
+    setThemeState('custom')
+    document.documentElement.setAttribute('data-theme', 'custom')
+    applyCustomColor(color)
+    localStorage.setItem('custom-theme-color', color)
+    localStorage.setItem('bg-theme-v2', 'custom')
+    window.dispatchEvent(new CustomEvent('theme-change', { detail: { theme: 'custom', customColor: color } }))
+  }
+
+  useEffect(() => {
+    const handleCustomChange = (e) => {
+      if (e.detail?.theme) setThemeState(e.detail.theme)
+      if (e.detail?.customColor) setCustomColorState(e.detail.customColor)
+    }
+    window.addEventListener('theme-change', handleCustomChange)
+    return () => window.removeEventListener('theme-change', handleCustomChange)
+  }, [])
+
+  useEffect(() => {
+    if (theme === 'custom') {
+      document.documentElement.setAttribute('data-theme', 'custom')
+      applyCustomColor(customColor)
+    } else {
+      clearCustomColor()
+      document.documentElement.setAttribute('data-theme', theme)
+    }
+  }, [])
+
+  return { theme, customColor, setTheme, setCustomColor }
+}
+
+function ThemePaletteStudio({ theme, customColor, onSelectTheme, onCustomColorChange, compact = false }) {
+  return (
+    <div className={`theme-palette-studio ${compact ? 'compact' : ''}`}>
+      <div className="theme-menu-head">
+        <span className="theme-menu-title">
+          <PaletteIcon size={14} style={{ marginRight: '8px' }} />Color Ambience
+        </span>
+        <span className="theme-studio-badge">
+          {theme === 'custom' ? 'Custom' : theme.toUpperCase()}
+        </span>
+      </div>
+
+      {/* Preset Palette Swatches */}
+      <div className="theme-swatch-grid">
+        {THEMES.map((t) => (
+          <button
+            key={t.key}
+            type="button"
+            className={`swatch-btn ${theme === t.key ? 'active' : ''}`}
+            title={t.label}
+            onClick={() => onSelectTheme(t.key)}
+          >
+            <span className="swatch-circle" style={{ background: t.sw }} />
+            <span className="swatch-name">{t.label}</span>
+          </button>
+        ))}
+      </div>
+
+      {/* Live Custom Color Picker */}
+      <div className="custom-color-card">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
+          <span className="custom-color-label">Custom Palette</span>
+          <span style={{ fontSize: '0.72rem', color: 'var(--muted)', fontFamily: 'monospace' }}>{customColor.toUpperCase()}</span>
+        </div>
+        <div className="custom-color-controls">
+          <div className="custom-color-input-wrap">
+            <input
+              type="color"
+              className="custom-color-input"
+              value={customColor}
+              onChange={(e) => onCustomColorChange(e.target.value)}
+              aria-label="Pick custom background color"
+            />
+          </div>
+          <div className="custom-color-desc">
+            <span className="custom-color-hex">{customColor.toUpperCase()}</span>
+            <span className="custom-color-hint">Live reactive palette</span>
+          </div>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        className="theme-reset-btn"
+        onClick={() => onSelectTheme('water')}
+        title="Reset to default water theme"
+      >
+        Reset to Water Default
+      </button>
+    </div>
+  )
+}
+
+function ThemePicker({ theme, customColor, onSelectTheme, onCustomColorChange }) {
+  const [open, setOpen] = useState(false)
   const pickerRef = useRef(null)
 
   // Close on outside click
@@ -682,32 +806,10 @@ function ThemePicker() {
     return () => document.removeEventListener('click', onDocClick)
   }, [])
 
-  // Apply active theme
-  useEffect(() => {
-    if (theme === 'custom') {
-      document.documentElement.setAttribute('data-theme', 'custom')
-      applyCustomColor(customColor)
-    } else {
-      clearCustomColor()
-      document.documentElement.setAttribute('data-theme', theme)
-    }
-    localStorage.setItem('bg-theme-v2', theme)
-  }, [theme, customColor])
-
-  const selectPreset = (key) => {
-    setTheme(key)
-  }
-
-  const handleCustomColorChange = (e) => {
-    const val = e.target.value
-    setCustomColor(val)
-    setTheme('custom')
-    localStorage.setItem('custom-theme-color', val)
-  }
-
   return (
     <div className={`theme-picker ${open ? 'open' : ''}`} ref={pickerRef}>
       <button
+        type="button"
         className="theme-toggle"
         onClick={() => setOpen((o) => !o)}
         aria-label="Customize theme and background color"
@@ -719,60 +821,12 @@ function ThemePicker() {
       </button>
 
       <div className="theme-menu">
-        <div className="theme-menu-head">
-          <span className="theme-menu-title">
-            <PaletteIcon size={14} style={{ marginRight: '8px' }} />Color Ambience
-          </span>
-          <span style={{ fontSize: '0.72rem', color: 'var(--accent-primary)', fontWeight: 600 }}>
-            {theme === 'custom' ? 'Custom' : theme.toUpperCase()}
-          </span>
-        </div>
-
-        {/* Preset Palette Swatches */}
-        <div className="theme-swatch-grid">
-          {THEMES.map((t) => (
-            <button
-              key={t.key}
-              className={`swatch-btn ${theme === t.key ? 'active' : ''}`}
-              title={t.label}
-              onClick={() => selectPreset(t.key)}
-            >
-              <span className="swatch-circle" style={{ background: t.sw }} />
-              <span className="swatch-name">{t.label}</span>
-            </button>
-          ))}
-        </div>
-
-        {/* Live Custom Color Picker */}
-        <div className="custom-color-card">
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '8px' }}>
-            <span className="custom-color-label">Custom Palette</span>
-            <span style={{ fontSize: '0.7rem', color: 'var(--muted)' }}>Live color preview</span>
-          </div>
-          <div className="custom-color-controls">
-            <div className="custom-color-input-wrap">
-              <input
-                type="color"
-                className="custom-color-input"
-                value={customColor}
-                onChange={handleCustomColorChange}
-                aria-label="Pick custom background color"
-              />
-            </div>
-            <div className="custom-color-desc">
-              <span className="custom-color-hex">{customColor.toUpperCase()}</span>
-              <span className="custom-color-hint">Live reactive palette</span>
-            </div>
-          </div>
-        </div>
-
-        <button
-          className="theme-reset-btn"
-          onClick={() => selectPreset('water')}
-          title="Reset to default water theme"
-        >
-          Reset to Water Default
-        </button>
+        <ThemePaletteStudio
+          theme={theme}
+          customColor={customColor}
+          onSelectTheme={onSelectTheme}
+          onCustomColorChange={onCustomColorChange}
+        />
       </div>
     </div>
   )
@@ -781,6 +835,7 @@ function ThemePicker() {
 function Nav({ motion, onToggleMotion }) {
   const [open, setOpen] = useState(false)
   const [active, setActive] = useState('')
+  const { theme, customColor, setTheme, setCustomColor } = useTheme()
 
   // scrollspy — highlight the section currently in view
   useEffect(() => {
@@ -790,7 +845,7 @@ function Nav({ motion, onToggleMotion }) {
           if (e.isIntersecting) setActive(e.target.id)
         })
       },
-      { rootMargin: '-40% 0px -40% 0px' },
+      { rootMargin: '-35% 0px -35% 0px' },
     )
     NAV_LINKS.forEach(([, id]) => {
       const el = document.getElementById(id)
@@ -799,6 +854,7 @@ function Nav({ motion, onToggleMotion }) {
     return () => io.disconnect()
   }, [])
 
+  // Close on Escape key
   useEffect(() => {
     if (!open) return
     const onKey = (e) => {
@@ -808,64 +864,264 @@ function Nav({ motion, onToggleMotion }) {
     return () => window.removeEventListener('keydown', onKey)
   }, [open])
 
+  // Prevent background scrolling on mobile when drawer is open
+  useEffect(() => {
+    if (open) {
+      document.body.classList.add('drawer-open')
+    } else {
+      document.body.classList.remove('drawer-open')
+    }
+    return () => {
+      document.body.classList.remove('drawer-open')
+    }
+  }, [open])
+
   return (
     <>
-      {open && <div className="nav-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />}
-      <nav className="nav">
-        <a href="#top" className="brand">
-          <span className="brand-mark">JN</span> Jagadesh Nethinti
-        </a>
-        <button
-          className={`nav-toggle ${open ? 'open' : ''}`}
-          onClick={() => setOpen((o) => !o)}
-          aria-label="Menu"
-        >
-          <span /><span /><span />
-        </button>
-        <div className={`nav-links ${open ? 'open' : ''}`}>
-          {NAV_LINKS.map(([label, id]) => (
+      {/* ---------------- Top Floating Navigation Bar ---------------- */}
+      <header className="nav-header">
+        <nav className="nav" aria-label="Main Navigation">
+          <a href="#top" className="brand" aria-label="Jagadesh Nethinti - Home">
+            <span className="brand-mark">JN</span>
+            <span className="brand-name">Jagadesh Nethinti</span>
+          </a>
+
+          {/* Desktop Navigation Links */}
+          <div className="desktop-nav-links">
+            {NAV_LINKS.map(([label, id]) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`nav-link-item ${active === id ? 'active' : ''}`}
+              >
+                {label}
+              </a>
+            ))}
+          </div>
+
+          {/* Desktop Controls & CTA */}
+          <div className="desktop-nav-actions">
+            <button
+              className={`motion-toggle ${motion ? 'active' : ''}`}
+              onClick={onToggleMotion}
+              aria-label={motion ? 'Pause ambient motion' : 'Play ambient motion'}
+              title={motion ? 'Pause ambient motion' : 'Play ambient motion'}
+            >
+              {motion ? (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true">
+                  <rect x="5" y="3" width="4.5" height="18" rx="2" />
+                  <rect x="14.5" y="3" width="4.5" height="18" rx="2" />
+                </svg>
+              ) : (
+                <svg width="12" height="12" viewBox="0 0 24 24" fill="#34d399" aria-hidden="true" style={{ marginLeft: '1px' }}>
+                  <path d="M6 4.5v15c0 .85.92 1.38 1.66.95l12-7.5c.74-.46.74-1.54 0-2l-12-7.5C6.92 3.12 6 3.65 6 4.5z" />
+                </svg>
+              )}
+            </button>
+
+            <ThemePicker
+              theme={theme}
+              customColor={customColor}
+              onSelectTheme={setTheme}
+              onCustomColorChange={setCustomColor}
+            />
+
             <a
-              key={id}
-              href={`#${id}`}
-              className={active === id ? 'active' : ''}
+              href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
+              target="_blank"
+              rel="noreferrer"
+              className="nav-icon-link"
+              title="Connect on LinkedIn"
+            >
+              <LinkedInIcon size={14} style={{ marginRight: '6px' }} />
+              <span>LinkedIn</span>
+            </a>
+
+            <a className="nav-cta" href={RESUME} download>
+              <DownloadIcon size={14} style={{ marginRight: '6px' }} />
+              <span>Curriculum Vitae</span>
+            </a>
+          </div>
+
+          {/* Mobile Header Triggers (Theme Quick Button + Hamburger Toggle) */}
+          <div className="mobile-header-triggers">
+            <div className="mobile-quick-theme">
+              <ThemePicker
+                theme={theme}
+                customColor={customColor}
+                onSelectTheme={setTheme}
+                onCustomColorChange={setCustomColor}
+              />
+            </div>
+            <button
+              className={`nav-toggle ${open ? 'open' : ''}`}
+              onClick={() => setOpen((o) => !o)}
+              aria-label={open ? 'Close navigation drawer' : 'Open navigation drawer'}
+              aria-expanded={open}
+            >
+              <span />
+              <span />
+              <span />
+            </button>
+          </div>
+        </nav>
+      </header>
+
+      {/* ---------------- Mobile Premium Sidebar Drawer ---------------- */}
+      <div
+        className={`drawer-backdrop ${open ? 'open' : ''}`}
+        onClick={() => setOpen(false)}
+        aria-hidden={!open}
+      />
+
+      <aside
+        className={`mobile-drawer ${open ? 'open' : ''}`}
+        aria-label="Mobile Navigation Sidebar"
+        aria-hidden={!open}
+      >
+        <div className="mobile-drawer-inner">
+          {/* Drawer Header: Brand Profile & Close Button */}
+          <div className="drawer-header">
+            <div className="drawer-brand-row">
+              <div className="drawer-brand">
+                <span className="brand-mark drawer-avatar-mark">JN</span>
+                <div className="drawer-brand-text">
+                  <span className="drawer-brand-name">Jagadesh Nethinti</span>
+                  <span className="drawer-brand-sub">Mobile &amp; AI Systems Engineer</span>
+                </div>
+              </div>
+              <button
+                type="button"
+                className="drawer-close-btn"
+                onClick={() => setOpen(false)}
+                aria-label="Close navigation drawer"
+              >
+                <CloseIcon size={18} />
+              </button>
+            </div>
+
+            <div className="drawer-status-pill">
+              <span className="drawer-status-dot" />
+              <span>Available for High-Scale Roles</span>
+            </div>
+          </div>
+
+          {/* Section: Navigation */}
+          <div className="drawer-section-label">
+            <span>Navigation</span>
+          </div>
+
+          <nav className="drawer-nav-list" aria-label="Mobile Drawer Navigation">
+            {NAV_LINKS.map(([label, id, IconComponent]) => (
+              <a
+                key={id}
+                href={`#${id}`}
+                className={`drawer-nav-item ${active === id ? 'active' : ''}`}
+                onClick={() => setOpen(false)}
+              >
+                <div className="drawer-link-left">
+                  <span className="drawer-link-icon">
+                    <IconComponent size={18} />
+                  </span>
+                  <span className="drawer-link-label">{label}</span>
+                </div>
+                <span className="drawer-chevron">
+                  <ChevronRightIcon size={15} />
+                </span>
+              </a>
+            ))}
+          </nav>
+
+          {/* Section: Ambience & Controls */}
+          <div className="drawer-section-label">
+            <span>Ambience &amp; Controls</span>
+          </div>
+
+          <div className="drawer-prefs-card">
+            {/* Motion toggle row */}
+            <div className="drawer-pref-row">
+              <div className="drawer-pref-info">
+                <span className="drawer-pref-name">Ambient FX &amp; Motion</span>
+                <span className="drawer-pref-desc">Canvas particle field &amp; mesh</span>
+              </div>
+              <button
+                type="button"
+                className={`drawer-motion-btn ${motion ? 'active' : ''}`}
+                onClick={onToggleMotion}
+                aria-label={motion ? 'Pause ambient motion' : 'Play ambient motion'}
+              >
+                {motion ? (
+                  <>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                      <rect x="5" y="3" width="4.5" height="18" rx="2" />
+                      <rect x="14.5" y="3" width="4.5" height="18" rx="2" />
+                    </svg>
+                    <span>ON</span>
+                  </>
+                ) : (
+                  <>
+                    <svg width="11" height="11" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true" style={{ marginLeft: '1px' }}>
+                      <path d="M6 4.5v15c0 .85.92 1.38 1.66.95l12-7.5c.74-.46.74-1.54 0-2l-12-7.5C6.92 3.12 6 3.65 6 4.5z" />
+                    </svg>
+                    <span>OFF</span>
+                  </>
+                )}
+              </button>
+            </div>
+
+            {/* Embedded Theme Palette Studio */}
+            <div className="drawer-theme-embedded">
+              <ThemePaletteStudio
+                theme={theme}
+                customColor={customColor}
+                onSelectTheme={setTheme}
+                onCustomColorChange={setCustomColor}
+                compact
+              />
+            </div>
+          </div>
+
+          {/* Section: Direct Action */}
+          <div className="drawer-section-label">
+            <span>Direct Actions</span>
+          </div>
+
+          <div className="drawer-actions">
+            <a
+              className="drawer-cta drawer-cv-btn"
+              href={RESUME}
+              download
               onClick={() => setOpen(false)}
             >
-              {label}
+              <DownloadIcon size={16} />
+              <span>Download Technical CV</span>
             </a>
-          ))}
-          <button
-            className="motion-toggle"
-            onClick={onToggleMotion}
-            aria-label={motion ? 'Pause background motion' : 'Play background motion'}
-            title={motion ? 'Pause background motion' : 'Play background motion'}
-          >
-            {motion ? (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true">
-                <rect x="5" y="3" width="4.5" height="18" rx="2" />
-                <rect x="14.5" y="3" width="4.5" height="18" rx="2" />
-              </svg>
-            ) : (
-              <svg width="12" height="12" viewBox="0 0 24 24" fill="#34d399" aria-hidden="true" style={{ marginLeft: '1px' }}>
-                <path d="M6 4.5v15c0 .85.92 1.38 1.66.95l12-7.5c.74-.46.74-1.54 0-2l-12-7.5C6.92 3.12 6 3.65 6 4.5z" />
-              </svg>
-            )}
-          </button>
-          <ThemePicker />
-          <a
-            href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
-            target="_blank"
-            rel="noreferrer"
-            style={{ display: 'inline-flex', alignItems: 'center' }}
-          >
-            <LinkedInIcon size={14} style={{ marginRight: '5px' }} />
-            <span>LinkedIn</span>
-          </a>
-          <a className="nav-cta" href={RESUME} download style={{ display: 'inline-flex', alignItems: 'center' }}>
-            <DownloadIcon size={14} style={{ marginRight: '6px' }} />
-            <span>Curriculum Vitae</span>
-          </a>
+            <a
+              className="drawer-cta drawer-linkedin-btn"
+              href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
+              target="_blank"
+              rel="noreferrer"
+            >
+              <LinkedInIcon size={16} />
+              <span>Connect on LinkedIn</span>
+            </a>
+            <a
+              className="drawer-cta drawer-email-btn"
+              href="mailto:jagadeeshnethinti944@gmail.com"
+              onClick={() => setOpen(false)}
+            >
+              <MailIcon size={16} />
+              <span>Send Direct Email</span>
+            </a>
+          </div>
+
+          {/* Footer Info */}
+          <div className="drawer-footer-tag">
+            <span className="drawer-footer-dot" />
+            <span>Jagadesh Nethinti · Production Architecture</span>
+          </div>
         </div>
-      </nav>
+      </aside>
     </>
   )
 }
@@ -1468,7 +1724,7 @@ export default function App() {
               <span className="hero-name-context">Jagadesh Nethinti</span>
               <span className="hero-title-separator">—</span>
               <br className="hero-title-break" />
-              Architecting Enterprise Mobile Apps &amp; AI Platforms.
+              <span className="hero-main-phrase">Architecting Enterprise Mobile Apps &amp; AI Platforms.</span>
             </h1>
 
             <p className="hero-build">
@@ -1476,9 +1732,10 @@ export default function App() {
             </p>
 
             <p className="hero-lede">
-              <strong>Jagadesh Nethinti</strong> is a <span className="hl">Professional Mobile App Developer</span> and <span className="hl">Senior Full-Stack AI Systems Engineer</span> with <span className="hl">2.3+ years</span> of
-              production experience architecting <span className="hl">17+ mobile systems &amp; microservices</span> using <span className="hl">React Native, NestJS, and Node.js</span>. Specializing in cross-platform mobile apps (<span className="hl">11+ Google Play releases</span>), autonomous multi-LLM orchestration (<span className="hl">Anthropic Claude &amp; ChatGPT</span>),
-              edge inference (<span className="hl">Ollama &amp; Hugging Face</span>), cryptographic auth, and real-time geospatial telemetry.
+              <strong>Jagadesh Nethinti</strong> is a Professional Mobile App Developer and Senior Full-Stack AI Systems Engineer with <span className="hl">2.3+ years</span> of
+              production experience architecting <span className="hl">17+ mobile systems &amp; microservices</span> using
+              React Native, NestJS, and Node.js. Specializing in cross-platform mobile apps (11+ Google Play releases), autonomous multi-LLM orchestration (Anthropic Claude &amp; ChatGPT),
+              edge inference (Ollama &amp; Hugging Face), cryptographic auth, and real-time geospatial telemetry.
             </p>
 
             <div className="hero-actions">
@@ -1691,7 +1948,7 @@ export default function App() {
         </section>
 
         {/* ---------- CERTS / EDUCATION ---------- */}
-        <section className="section">
+        <section id="credentials" className="section">
           <div className="container two-col">
             <div className="reveal">
               <p className="kicker">06 — Credentials &amp; Academics</p>
