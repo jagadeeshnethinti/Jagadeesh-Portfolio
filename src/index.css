@@ -909,6 +909,28 @@ ul { list-style: none; }
   text-shadow: 0 2px 4px rgba(0, 0, 0, 0.95), 0 1px 2px rgba(0, 0, 0, 0.9);
 }
 
+.hero-name-context {
+  background: var(--grad);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  display: inline-block;
+}
+
+.hero-title-separator {
+  color: rgba(255, 255, 255, 0.35);
+  margin: 0 10px;
+}
+
+@media (max-width: 640px) {
+  .hero-title-separator {
+    display: none;
+  }
+  .hero-title-break {
+    display: block;
+  }
+}
+
 .hero-build {
   font-family: var(--display);
   font-size: clamp(1.15rem, 2.3vw, 1.75rem);

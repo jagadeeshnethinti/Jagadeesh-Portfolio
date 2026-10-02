@@ -1,0 +1,7 @@
+# Robots.txt for https://jagadesh-nethinti.indevs.in/
+User-agent: *
+Allow: /
+
+# Host & Sitemap
+Host: https://jagadesh-nethinti.indevs.in/
+Sitemap: https://jagadesh-nethinti.indevs.in/sitemap.xml

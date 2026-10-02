@@ -803,7 +803,7 @@ function Nav({ motion, onToggleMotion }) {
   return (
     <nav className="nav">
       <a href="#top" className="brand">
-        <span className="brand-mark">JN</span> Jagadeesh Nethinti
+        <span className="brand-mark">JN</span> Jagadesh Nethinti
       </a>
       <button
         className={`nav-toggle ${open ? 'open' : ''}`}
@@ -860,11 +860,12 @@ function Nav({ motion, onToggleMotion }) {
 }
 
 const ROTATE_WORDS = [
+  'enterprise React Native mobile apps',
   'mission-critical AI architectures',
   'scalable NestJS microservices',
   'autonomous LLM orchestration',
   'real-time geospatial telemetry',
-  'high-concurrency mobile systems',
+  'cross-platform iOS & Android apps',
 ]
 
 function Rotator() {
@@ -912,7 +913,7 @@ function Portrait() {
           onMouseMove={onMove}
           onMouseLeave={reset}
         >
-          <img src="/profile.jpg" alt="Jagadeesh Nethinti" />
+          <img src="/profile.jpg" alt="Jagadesh Nethinti - Professional Mobile App Developer &amp; AI Software Engineer" />
           <span className="portrait-badge">AI Software Engineer</span>
         </div>
       </div>
@@ -1444,17 +1445,19 @@ export default function App() {
             <div className="hero-top-row">
               <div className="hero-eyebrow">
                 <span className="dot" />
-                <span>Senior Full-Stack &amp; AI Systems Engineer · Hyderabad, India</span>
+                <span>Jagadesh Nethinti · Professional App Developer &amp; AI Systems Engineer</span>
               </div>
               <div className="hero-status-pill">
                 <span className="status-live-ring" />
-                <span>Available for High-Scale Roles &amp; AI Architecture</span>
+                <span>Available for High-Scale Mobile &amp; AI Roles</span>
               </div>
             </div>
 
             <h1 className="hero-title">
-              Architecting <span className="grad">AI-Native Platforms</span> —
-              <br /> Scaled into <span className="grad">High-Performance Production</span>.
+              <span className="hero-name-context">Jagadesh Nethinti</span>
+              <span className="hero-title-separator">—</span>
+              <br className="hero-title-break" />
+              Architecting <span className="grad">Enterprise Mobile Apps</span> &amp; <span className="grad">AI Platforms</span>.
             </h1>
 
             <p className="hero-build">
@@ -1462,9 +1465,9 @@ export default function App() {
             </p>
 
             <p className="hero-lede">
-              Senior Full-Stack &amp; AI Systems Engineer with <span className="hl">2.3+ years</span> of
+              <strong>Jagadesh Nethinti</strong> is a Professional Mobile App Developer and Senior Full-Stack AI Systems Engineer with <span className="hl">2.3+ years</span> of
               production experience architecting <span className="hl">17+ mobile systems &amp; microservices</span> using
-              React Native, NestJS, and Node.js. Specializing in autonomous multi-LLM orchestration (<span className="hl">Anthropic Claude &amp; ChatGPT</span>),
+              React Native, NestJS, and Node.js. Specializing in cross-platform mobile apps (11+ Google Play releases), autonomous multi-LLM orchestration (<span className="hl">Anthropic Claude &amp; ChatGPT</span>),
               edge inference (<span className="hl">Ollama &amp; Hugging Face</span>), cryptographic auth, and real-time geospatial telemetry.
             </p>
 
@@ -1551,7 +1554,7 @@ export default function App() {
                 AI-native architecture, full-stack engineering precision.
               </h2>
               <p className="prose">
-                I am a <strong>Senior Full-Stack &amp; AI Systems Engineer</strong> with <span className="hl">2.3+ years</span> of
+                I am <strong>Jagadesh Nethinti</strong>, a <strong>Professional Mobile App Developer &amp; Senior Full-Stack AI Systems Engineer</strong> with <span className="hl">2.3+ years</span> of
                 rigorous production experience architecting and deploying <span className="hl">17+ mobile client systems</span> and
                 backend microservices utilizing <strong>React Native, NestJS, and Node.js</strong>.
                 Operating as the primary core engineer on a high-velocity 2-person team at Pengwin Solutions, I spearhead
@@ -1758,8 +1761,8 @@ export default function App() {
             </div>
           </div>
           <footer className="footer">
-            <span>© {new Date().getFullYear()} Jagadeesh Nethinti</span>
-            <span>Hyderabad, India · Senior Full-Stack &amp; AI Systems Engineer</span>
+            <span>© {new Date().getFullYear()} Jagadesh Nethinti · Professional Mobile App Developer &amp; AI Systems Engineer</span>
+            <span>Hyderabad, India · Lead Cross-Platform Mobile Architect</span>
           </footer>
         </section>
       </main>

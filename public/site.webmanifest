@@ -1,0 +1,16 @@
+{
+  "name": "Jagadesh Nethinti · Professional App Developer",
+  "short_name": "Jagadesh Nethinti",
+  "description": "Professional Mobile App Developer & Full-Stack AI Engineer specializing in React Native, iOS, Android, NestJS, and GenAI.",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#07080f",
+  "theme_color": "#07080f",
+  "icons": [
+    {
+      "src": "/favicon.svg",
+      "sizes": "any",
+      "type": "image/svg+xml"
+    }
+  ]
+}
