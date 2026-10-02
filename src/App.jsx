@@ -784,78 +784,89 @@ function Nav({ motion, onToggleMotion }) {
 
   // scrollspy — highlight the section currently in view
   useEffect(() => {
-    const ids = NAV_LINKS.map(([, id]) => id)
     const io = new IntersectionObserver(
       (entries) => {
         entries.forEach((e) => {
           if (e.isIntersecting) setActive(e.target.id)
         })
       },
-      { rootMargin: '-45% 0px -50% 0px' }
+      { rootMargin: '-40% 0px -40% 0px' },
     )
-    ids.forEach((id) => {
+    NAV_LINKS.forEach(([, id]) => {
       const el = document.getElementById(id)
       if (el) io.observe(el)
     })
     return () => io.disconnect()
   }, [])
 
+  useEffect(() => {
+    if (!open) return
+    const onKey = (e) => {
+      if (e.key === 'Escape') setOpen(false)
+    }
+    window.addEventListener('keydown', onKey)
+    return () => window.removeEventListener('keydown', onKey)
+  }, [open])
+
   return (
-    <nav className="nav">
-      <a href="#top" className="brand">
-        <span className="brand-mark">JN</span> Jagadesh Nethinti
-      </a>
-      <button
-        className={`nav-toggle ${open ? 'open' : ''}`}
-        onClick={() => setOpen((o) => !o)}
-        aria-label="Menu"
-      >
-        <span /><span /><span />
-      </button>
-      <div className={`nav-links ${open ? 'open' : ''}`}>
-        {NAV_LINKS.map(([label, id]) => (
-          <a
-            key={id}
-            href={`#${id}`}
-            className={active === id ? 'active' : ''}
-            onClick={() => setOpen(false)}
-          >
-            {label}
-          </a>
-        ))}
+    <>
+      {open && <div className="nav-backdrop" onClick={() => setOpen(false)} aria-hidden="true" />}
+      <nav className="nav">
+        <a href="#top" className="brand">
+          <span className="brand-mark">JN</span> Jagadesh Nethinti
+        </a>
         <button
-          className="motion-toggle"
-          onClick={onToggleMotion}
-          aria-label={motion ? 'Pause background motion' : 'Play background motion'}
-          title={motion ? 'Pause background motion' : 'Play background motion'}
+          className={`nav-toggle ${open ? 'open' : ''}`}
+          onClick={() => setOpen((o) => !o)}
+          aria-label="Menu"
         >
-          {motion ? (
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true">
-              <rect x="5" y="3" width="4.5" height="18" rx="2" />
-              <rect x="14.5" y="3" width="4.5" height="18" rx="2" />
-            </svg>
-          ) : (
-            <svg width="12" height="12" viewBox="0 0 24 24" fill="#34d399" aria-hidden="true" style={{ marginLeft: '1px' }}>
-              <path d="M6 4.5v15c0 .85.92 1.38 1.66.95l12-7.5c.74-.46.74-1.54 0-2l-12-7.5C6.92 3.12 6 3.65 6 4.5z" />
-            </svg>
-          )}
+          <span /><span /><span />
         </button>
-        <ThemePicker />
-        <a
-          href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
-          target="_blank"
-          rel="noreferrer"
-          style={{ display: 'inline-flex', alignItems: 'center' }}
-        >
-          <LinkedInIcon size={14} style={{ marginRight: '5px' }} />
-          <span>LinkedIn</span>
-        </a>
-        <a className="nav-cta" href={RESUME} download style={{ display: 'inline-flex', alignItems: 'center' }}>
-          <DownloadIcon size={14} style={{ marginRight: '6px' }} />
-          <span>Curriculum Vitae</span>
-        </a>
-      </div>
-    </nav>
+        <div className={`nav-links ${open ? 'open' : ''}`}>
+          {NAV_LINKS.map(([label, id]) => (
+            <a
+              key={id}
+              href={`#${id}`}
+              className={active === id ? 'active' : ''}
+              onClick={() => setOpen(false)}
+            >
+              {label}
+            </a>
+          ))}
+          <button
+            className="motion-toggle"
+            onClick={onToggleMotion}
+            aria-label={motion ? 'Pause background motion' : 'Play background motion'}
+            title={motion ? 'Pause background motion' : 'Play background motion'}
+          >
+            {motion ? (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true">
+                <rect x="5" y="3" width="4.5" height="18" rx="2" />
+                <rect x="14.5" y="3" width="4.5" height="18" rx="2" />
+              </svg>
+            ) : (
+              <svg width="12" height="12" viewBox="0 0 24 24" fill="#34d399" aria-hidden="true" style={{ marginLeft: '1px' }}>
+                <path d="M6 4.5v15c0 .85.92 1.38 1.66.95l12-7.5c.74-.46.74-1.54 0-2l-12-7.5C6.92 3.12 6 3.65 6 4.5z" />
+              </svg>
+            )}
+          </button>
+          <ThemePicker />
+          <a
+            href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
+            target="_blank"
+            rel="noreferrer"
+            style={{ display: 'inline-flex', alignItems: 'center' }}
+          >
+            <LinkedInIcon size={14} style={{ marginRight: '5px' }} />
+            <span>LinkedIn</span>
+          </a>
+          <a className="nav-cta" href={RESUME} download style={{ display: 'inline-flex', alignItems: 'center' }}>
+            <DownloadIcon size={14} style={{ marginRight: '6px' }} />
+            <span>Curriculum Vitae</span>
+          </a>
+        </div>
+      </nav>
+    </>
   )
 }
 
@@ -879,7 +890,7 @@ function Rotator() {
   return (
     <span className="rotator">
       {ROTATE_WORDS.map((w, idx) => (
-        <span key={w} className={`rot-word ${idx === i ? 'on' : ''}`}>
+        <span key={w} className={`rot-word ${idx === i ? 'on' : ''}`} style={{ color: '#38bdf8' }}>
           {w}
         </span>
       ))}
@@ -1457,7 +1468,7 @@ export default function App() {
               <span className="hero-name-context">Jagadesh Nethinti</span>
               <span className="hero-title-separator">—</span>
               <br className="hero-title-break" />
-              Architecting <span className="grad">Enterprise Mobile Apps</span> &amp; <span className="grad">AI Platforms</span>.
+              Architecting Enterprise Mobile Apps &amp; AI Platforms.
             </h1>
 
             <p className="hero-build">
@@ -1465,9 +1476,8 @@ export default function App() {
             </p>
 
             <p className="hero-lede">
-              <strong>Jagadesh Nethinti</strong> is a Professional Mobile App Developer and Senior Full-Stack AI Systems Engineer with <span className="hl">2.3+ years</span> of
-              production experience architecting <span className="hl">17+ mobile systems &amp; microservices</span> using
-              React Native, NestJS, and Node.js. Specializing in cross-platform mobile apps (11+ Google Play releases), autonomous multi-LLM orchestration (<span className="hl">Anthropic Claude &amp; ChatGPT</span>),
+              <strong>Jagadesh Nethinti</strong> is a <span className="hl">Professional Mobile App Developer</span> and <span className="hl">Senior Full-Stack AI Systems Engineer</span> with <span className="hl">2.3+ years</span> of
+              production experience architecting <span className="hl">17+ mobile systems &amp; microservices</span> using <span className="hl">React Native, NestJS, and Node.js</span>. Specializing in cross-platform mobile apps (<span className="hl">11+ Google Play releases</span>), autonomous multi-LLM orchestration (<span className="hl">Anthropic Claude &amp; ChatGPT</span>),
               edge inference (<span className="hl">Ollama &amp; Hugging Face</span>), cryptographic auth, and real-time geospatial telemetry.
             </p>
 
