@@ -474,6 +474,26 @@ export function ChatNavIcon({ size = 18, color = '#f472b6', style = {} }) {
   )
 }
 
+export function AcademicNavIcon({ size = 18, color = '#a78bfa', style = {} }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0, ...style }}
+      aria-hidden="true"
+    >
+      <path d="M22 10v6M2 10l10-5 10 5-10 5z" fill="rgba(167, 139, 250, 0.16)" />
+      <path d="M6 12v5c3 3 9 3 12 0v-5" />
+    </svg>
+  )
+}
+
 export function ChevronRightIcon({ size = 16, color = 'rgba(255, 255, 255, 0.45)', style = {} }) {
   return (
     <svg
@@ -489,6 +509,25 @@ export function ChevronRightIcon({ size = 16, color = 'rgba(255, 255, 255, 0.45)
       aria-hidden="true"
     >
       <polyline points="9 18 15 12 9 6" />
+    </svg>
+  )
+}
+
+export function ChevronUpIcon({ size = 18, color = 'currentColor', style = {} }) {
+  return (
+    <svg
+      width={size}
+      height={size}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke={color}
+      strokeWidth="2.5"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      style={{ display: 'inline-block', verticalAlign: 'middle', flexShrink: 0, ...style }}
+      aria-hidden="true"
+    >
+      <polyline points="18 15 12 9 6 15" />
     </svg>
   )
 }

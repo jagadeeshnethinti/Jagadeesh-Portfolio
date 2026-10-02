@@ -22,7 +22,9 @@ import {
   CpuNavIcon,
   BriefcaseNavIcon,
   ChatNavIcon,
+  AcademicNavIcon,
   ChevronRightIcon,
+  ChevronUpIcon,
 } from './Icons.jsx'
 
 const RESUME = '/Jagadeesh_Nethinti_Resume.pdf'
@@ -565,32 +567,38 @@ function useCardTilt() {
 }
 
 const NAV_LINKS = [
-  ['About', 'about', UserNavIcon],
-  ['Telemetry', 'dashboards', PowerBIIcon],
-  ['Toolkit', 'skills', CpuNavIcon],
-  ['Experience', 'experience', BriefcaseNavIcon],
-  ['Systems', 'projects', LayersNavIcon],
-  ['Contact', 'contact', ChatNavIcon],
+  { label: 'About', id: 'about', icon: UserNavIcon },
+  { label: 'Telemetry', id: 'dashboards', icon: PowerBIIcon },
+  { label: 'Skills', id: 'skills', icon: CpuNavIcon },
+  { label: 'Experience', id: 'experience', icon: BriefcaseNavIcon },
+  { label: 'Projects', id: 'projects', icon: LayersNavIcon },
+  {
+    label: 'Academics & Certs',
+    shortLabel: 'Academics',
+    drawerLabel: 'Academics & Certifications',
+    id: 'credentials',
+    icon: AcademicNavIcon,
+  },
+  { label: 'Contact', id: 'contact', icon: ChatNavIcon },
 ]
 
 const THEMES = [
   { key: 'water', label: 'Water', sw: 'linear-gradient(135deg,#2fe0ff,#7affd6)' },
-  { key: 'aqua', label: 'Aqua', sw: 'linear-gradient(135deg,#41ecdf,#7cc5ff)' },
   { key: 'cobalt', label: 'Cobalt', sw: 'linear-gradient(135deg,#3b82f6,#93c5fd)' },
-  { key: 'sapphire', label: 'Sapphire', sw: 'linear-gradient(135deg,#0284c7,#38bdf8)' },
   { key: 'emerald', label: 'Emerald', sw: 'linear-gradient(135deg,#10b981,#6ee7b7)' },
-  { key: 'teal', label: 'Teal', sw: 'linear-gradient(135deg,#0d9488,#2dd4bf)' },
-  { key: 'forest', label: 'Forest', sw: 'linear-gradient(135deg,#059669,#34d399)' },
   { key: 'indigo', label: 'Indigo', sw: 'linear-gradient(135deg,#6366f1,#a5b4fc)' },
+  { key: 'violet', label: 'Violet', sw: 'linear-gradient(135deg,#a855f7,#e879f9)' },
+  { key: 'rose', label: 'Rose', sw: 'linear-gradient(135deg,#f43f5e,#fda4af)' },
+  { key: 'sunset', label: 'Sunset', sw: 'linear-gradient(135deg,#f97316,#fdba74)' },
   { key: 'amber', label: 'Amber', sw: 'linear-gradient(135deg,#f59e0b,#fde047)' },
   { key: 'citron', label: 'Citron', sw: 'linear-gradient(135deg,#84cc16,#bef264)' },
-  { key: 'arctic', label: 'Arctic', sw: 'linear-gradient(135deg,#38bdf8,#e0f2fe)' },
+  { key: 'neon', label: 'Neon', sw: 'linear-gradient(135deg,#06b6d4,#8b5cf6)' },
   { key: 'mono', label: 'Mono', sw: 'linear-gradient(135deg,#cbd5e1,#ffffff)' },
 ]
 
 const VALID_THEME_KEYS = [
-  'water', 'aqua', 'cobalt', 'sapphire', 'emerald', 'teal',
-  'forest', 'indigo', 'amber', 'citron', 'arctic', 'mono', 'custom'
+  'water', 'cobalt', 'emerald', 'indigo', 'violet', 'rose',
+  'sunset', 'amber', 'citron', 'neon', 'mono', 'custom'
 ]
 
 function hexToRgb(hex) {
@@ -847,7 +855,7 @@ function Nav({ motion, onToggleMotion }) {
       },
       { rootMargin: '-35% 0px -35% 0px' },
     )
-    NAV_LINKS.forEach(([, id]) => {
+    NAV_LINKS.forEach(({ id }) => {
       const el = document.getElementById(id)
       if (el) io.observe(el)
     })
@@ -888,13 +896,21 @@ function Nav({ motion, onToggleMotion }) {
 
           {/* Desktop Navigation Links */}
           <div className="desktop-nav-links">
-            {NAV_LINKS.map(([label, id]) => (
+            {NAV_LINKS.map((link) => (
               <a
-                key={id}
-                href={`#${id}`}
-                className={`nav-link-item ${active === id ? 'active' : ''}`}
+                key={link.id}
+                href={`#${link.id}`}
+                className={`nav-link-item ${active === link.id ? 'active' : ''}`}
+                title={link.drawerLabel || link.label}
               >
-                {label}
+                {link.shortLabel ? (
+                  <>
+                    <span className="nav-desktop-short">{link.shortLabel}</span>
+                    <span className="nav-desktop-long">{link.label}</span>
+                  </>
+                ) : (
+                  link.label
+                )}
               </a>
             ))}
           </div>
@@ -925,17 +941,6 @@ function Nav({ motion, onToggleMotion }) {
               onSelectTheme={setTheme}
               onCustomColorChange={setCustomColor}
             />
-
-            <a
-              href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
-              target="_blank"
-              rel="noreferrer"
-              className="nav-icon-link"
-              title="Connect on LinkedIn"
-            >
-              <LinkedInIcon size={14} style={{ marginRight: '6px' }} />
-              <span>LinkedIn</span>
-            </a>
 
             <a className="nav-cta" href={RESUME} download>
               <DownloadIcon size={14} style={{ marginRight: '6px' }} />
@@ -1012,24 +1017,27 @@ function Nav({ motion, onToggleMotion }) {
           </div>
 
           <nav className="drawer-nav-list" aria-label="Mobile Drawer Navigation">
-            {NAV_LINKS.map(([label, id, IconComponent]) => (
-              <a
-                key={id}
-                href={`#${id}`}
-                className={`drawer-nav-item ${active === id ? 'active' : ''}`}
-                onClick={() => setOpen(false)}
-              >
-                <div className="drawer-link-left">
-                  <span className="drawer-link-icon">
-                    <IconComponent size={18} />
+            {NAV_LINKS.map((link) => {
+              const IconComponent = link.icon
+              return (
+                <a
+                  key={link.id}
+                  href={`#${link.id}`}
+                  className={`drawer-nav-item ${active === link.id ? 'active' : ''}`}
+                  onClick={() => setOpen(false)}
+                >
+                  <div className="drawer-link-left">
+                    <span className="drawer-link-icon">
+                      <IconComponent size={18} />
+                    </span>
+                    <span className="drawer-link-label">{link.drawerLabel || link.label}</span>
+                  </div>
+                  <span className="drawer-chevron">
+                    <ChevronRightIcon size={15} />
                   </span>
-                  <span className="drawer-link-label">{label}</span>
-                </div>
-                <span className="drawer-chevron">
-                  <ChevronRightIcon size={15} />
-                </span>
-              </a>
-            ))}
+                </a>
+              )
+            })}
           </nav>
 
           {/* Section: Ambience & Controls */}
@@ -1666,6 +1674,79 @@ function ProjectCard({ p, i, setActiveProject, globalMode }) {
   )
 }
 
+/* ------------------------------------------------------------------ *
+ *  Floating Scroll-To-Top Widget with Dynamic Circular Progress
+ * ------------------------------------------------------------------ */
+function ScrollToTop() {
+  const [visible, setVisible] = useState(false)
+  const [scrollProgress, setScrollProgress] = useState(0)
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const totalHeight = document.documentElement.scrollHeight - window.innerHeight
+      const currentScroll = window.scrollY || document.documentElement.scrollTop
+      if (totalHeight > 0) {
+        setScrollProgress(Math.min(100, Math.max(0, (currentScroll / totalHeight) * 100)))
+      }
+      setVisible(currentScroll > 420)
+    }
+
+    window.addEventListener('scroll', handleScroll, { passive: true })
+    handleScroll()
+    return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth',
+    })
+  }
+
+  // Circular progress stroke dimensions
+  const radius = 20
+  const circumference = 2 * Math.PI * radius
+  const strokeDashoffset = circumference - (scrollProgress / 100) * circumference
+
+  return (
+    <button
+      type="button"
+      className={`scroll-to-top-btn ${visible ? 'visible' : ''}`}
+      onClick={scrollToTop}
+      aria-label="Scroll back to top of page"
+      title="Scroll to top"
+    >
+      <svg className="scroll-progress-ring" width="48" height="48" viewBox="0 0 48 48" aria-hidden="true">
+        <circle
+          className="ring-bg"
+          cx="24"
+          cy="24"
+          r={radius}
+          fill="none"
+          stroke="rgba(255, 255, 255, 0.12)"
+          strokeWidth="2.5"
+        />
+        <circle
+          className="ring-progress"
+          cx="24"
+          cy="24"
+          r={radius}
+          fill="none"
+          stroke="var(--accent-primary)"
+          strokeWidth="2.5"
+          strokeDasharray={circumference}
+          strokeDashoffset={strokeDashoffset}
+          strokeLinecap="round"
+        />
+      </svg>
+      <span className="scroll-arrow-wrap">
+        <ChevronUpIcon size={18} color="#ffffff" />
+      </span>
+      <span className="scroll-tooltip">Back to Top</span>
+    </button>
+  )
+}
+
 export default function App() {
   useReveal()
   useCardTilt()
@@ -1755,19 +1836,19 @@ export default function App() {
 
             <div className="hero-metrics-grid">
               <div className="hero-metric-card">
-                <span className="metric-val grad">17+</span>
+                <span className="metric-val">17+</span>
                 <span className="metric-label">Production Client Apps &amp; NestJS Backends Delivered</span>
               </div>
               <div className="hero-metric-card">
-                <span className="metric-val grad">11+</span>
+                <span className="metric-val">11+</span>
                 <span className="metric-label">Verified Production Releases on Google Play Store</span>
               </div>
               <div className="hero-metric-card">
-                <span className="metric-val grad">Multi-LLM</span>
+                <span className="metric-val">Multi-LLM</span>
                 <span className="metric-label">Claude, GPT-4 &amp; Local Quantized Inference (Ollama)</span>
               </div>
               <div className="hero-metric-card">
-                <span className="metric-val grad">2.3+ Yrs</span>
+                <span className="metric-val">2.3+ Yrs</span>
                 <span className="metric-label">Mission-Critical Enterprise Distributed Systems</span>
               </div>
             </div>
@@ -1829,9 +1910,9 @@ export default function App() {
               </p>
               <p className="prose">
                 My technical specialization focuses on integrating enterprise foundation models into live production workflows:
-                orchestrating <span className="hl">Anthropic Claude &amp; OpenAI ChatGPT APIs</span>, engineering multi-turn context guardrails,
-                deploying local quantized inference via <span className="hl">Ollama &amp; Hugging Face</span>, and delivering zero-hallucination conversational agents.
-                Across <span className="hl">11+ verified production applications on Google Play</span> (including Lisa Social Commerce, the Hailo Cabs Mobility Ecosystem, Socialpost Telecaller, the Portda Maritime Ecosystem, Simhadri Transport Freight Ecosystem,
+                orchestrating Anthropic Claude &amp; OpenAI ChatGPT APIs, engineering multi-turn context guardrails,
+                deploying local quantized inference via Ollama &amp; Hugging Face, and delivering zero-hallucination conversational agents.
+                Across 11+ verified production applications on Google Play (including Lisa Social Commerce, the Hailo Cabs Mobility Ecosystem, Socialpost Telecaller, the Portda Maritime Ecosystem, Simhadri Transport Freight Ecosystem,
                 Serum Healthcare, CarHive, and AskrDukan), I have implemented real-time WebSockets telemetry, sub-second GPS tracking, and cryptographic JWT authorization.
               </p>
               <p className="prose">
@@ -2033,6 +2114,8 @@ export default function App() {
           </footer>
         </section>
       </main>
+
+      <ScrollToTop />
 
       <ProjectModal
         project={activeProject}

@@ -1,15 +1,107 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
+  <!-- Homepage & Core Profile -->
   <url>
     <loc>https://jagadesh-nethinti.indevs.in/</loc>
     <lastmod>2026-10-02</lastmod>
-    <changefreq>weekly</changefreq>
-    <priority>1.0</priority>
+    <changefreq>daily</changefreq>
+    <priority>1.00</priority>
     <image:image>
       <image:loc>https://jagadesh-nethinti.indevs.in/profile.jpg</image:loc>
-      <image:title>Jagadesh Nethinti - Professional Mobile App Developer &amp; AI Software Engineer</image:title>
-      <image:caption>Official portrait of Jagadesh Nethinti</image:caption>
+      <image:title>Jagadesh Nethinti - Professional Mobile App Developer &amp; AI Systems Engineer</image:title>
+      <image:caption>Official executive portrait of Jagadesh Nethinti</image:caption>
     </image:image>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/hailo-icon.png</image:loc>
+      <image:title>Hailo Cabs Mobility Ecosystem - Google Play Production Release</image:title>
+      <image:caption>Production React Native mobile application by Jagadesh Nethinti</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/lisa-icon.png</image:loc>
+      <image:title>Lisa Chat AI Social Commerce Ecosystem</image:title>
+      <image:caption>Autonomous multi-LLM orchestration mobile system by Jagadesh Nethinti</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/portda-icon.png</image:loc>
+      <image:title>PortDA Maritime Logistics &amp; Telemetry Platform</image:title>
+      <image:caption>Enterprise dual-app ecosystem architected by Jagadesh Nethinti</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Technical Deliverables & Production Systems -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/#projects</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/hailo-1.png</image:loc>
+      <image:title>Hailo Cabs Passenger &amp; Driver Fleet System</image:title>
+      <image:caption>Sub-second geospatial WebSockets telemetry and automated fare computation</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/lisa-screen1.webp</image:loc>
+      <image:title>Lisa Social Commerce Multi-Turn AI Interface</image:title>
+      <image:caption>Generative AI conversational system powered by Claude &amp; ChatGPT APIs</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/portda-1.png</image:loc>
+      <image:title>PortDA Maritime Marine Terminal Platform</image:title>
+      <image:caption>Mission-critical industrial supply telemetry and customs verification</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://jagadesh-nethinti.indevs.in/projects/carhive-1.png</image:loc>
+      <image:title>CarHive Fleet Telematics &amp; Operational Analytics</image:title>
+      <image:caption>Enterprise fleet telemetry driving strategic vehicle acquisition</image:caption>
+    </image:image>
+  </url>
+
+  <!-- Engineering Profile & Architectural Philosophy -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/#about</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.90</priority>
+  </url>
+
+  <!-- Technical Competencies & Foundation Models Stack -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/#skills</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Professional Career & Enterprise Track Record -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/#experience</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- Production Telemetry & Quantitative Systems Intelligence -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/#dashboards</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Direct Collaboration & Executive Inquiries -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/#contact</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
+  <!-- Technical Curriculum Vitae (PDF Resource) -->
+  <url>
+    <loc>https://jagadesh-nethinti.indevs.in/Jagadeesh_Nethinti_Resume.pdf</loc>
+    <lastmod>2026-10-02</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
   </url>
 </urlset>
