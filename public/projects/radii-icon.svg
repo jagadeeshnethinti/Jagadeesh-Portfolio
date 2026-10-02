@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120">
+  <defs>
+    <linearGradient id="radiiGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0fbf8f" />
+      <stop offset="100%" stop-color="#0a6d8c" />
+    </linearGradient>
+    <linearGradient id="coreGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#41ecdf" />
+      <stop offset="100%" stop-color="#0fbf8f" />
+    </linearGradient>
+  </defs>
+  <rect width="120" height="120" rx="28" fill="url(#radiiGrad)" />
+  <!-- Neural / Clinical Ring -->
+  <circle cx="60" cy="60" r="34" fill="none" stroke="rgba(255,255,255,0.18)" stroke-width="4" stroke-dasharray="6 4" />
+  <circle cx="60" cy="60" r="26" fill="rgba(10, 20, 30, 0.45)" stroke="url(#coreGrad)" stroke-width="2.5" />
+  <!-- Clinical AI Core -->
+  <path d="M60 44 L60 76 M44 60 L76 60" stroke="#41ecdf" stroke-width="4.5" stroke-linecap="round" />
+  <circle cx="60" cy="60" r="4.5" fill="#ffffff" />
+  <circle cx="60" cy="38" r="3" fill="#41ecdf" />
+  <circle cx="82" cy="60" r="3" fill="#41ecdf" />
+  <circle cx="60" cy="82" r="3" fill="#41ecdf" />
+  <circle cx="38" cy="60" r="3" fill="#41ecdf" />
+</svg>
