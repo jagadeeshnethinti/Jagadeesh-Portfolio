@@ -30,7 +30,7 @@ export default function VideoBackground() {
     return () => obs.disconnect()
   }, [])
 
-  // 2. High-performance interactive constellation canvas
+  // High-performance interactive constellation canvas
   useEffect(() => {
     const canvas = canvasRef.current
     if (!canvas) return

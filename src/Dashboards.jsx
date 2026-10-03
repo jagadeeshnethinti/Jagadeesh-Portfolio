@@ -13,11 +13,27 @@ const REVENUE = [
   ['Van', 9],
 ]
 
-export default function Dashboards() {
+export default function Dashboards({ onCopyDeepLink }) {
   return (
     <section id="dashboards" className="section">
       <div className="container">
-        <p className="kicker reveal">02 — Telemetry &amp; Quantitative Intelligence</p>
+        <p className="kicker reveal">
+          02 — Telemetry &amp; Quantitative Intelligence
+          {onCopyDeepLink && (
+            <button
+              type="button"
+              className="deep-link-anchor"
+              onClick={(e) => {
+                e.stopPropagation()
+                onCopyDeepLink('dashboards')
+              }}
+              title="Copy deep link to #dashboards"
+              aria-label="Copy deep link to #dashboards"
+            >
+              <span className="hash-symbol">#</span>
+            </button>
+          )}
+        </p>
         <h2 className="section-title reveal">Production Telemetry &amp; Quantitative Systems Intelligence</h2>
         <p className="prose reveal">
           Every system I architect is engineered for data-driven precision — transforming production
@@ -90,69 +106,75 @@ export default function Dashboards() {
             </svg>
           </div>
 
-          {/* Pizza demand — area chart */}
+          {/* Hailo Cabs — Dispatch Latency & Trip Fulfillment */}
           <div className="viz-card glass reveal">
             <div className="viz-head">
               <div className="viz-head-title-group">
-                <span className="viz-app-tag">Enterprise Sales Intelligence</span>
-                <span className="viz-title">Temporal Order Demand Distribution</span>
+                <span className="viz-app-tag">Hailo Cabs Mobility Ecosystem</span>
+                <span className="viz-title">Driver Match Latency &amp; Trip Fulfillment</span>
               </div>
-              <span className="viz-tool">Tableau · Analytics</span>
+              <span className="viz-tool">PostgreSQL · WebSockets</span>
             </div>
-            <svg className="spark tall" viewBox="0 0 300 120" preserveAspectRatio="none">
+            <div className="kpi">
+              <Counter end={650} prefix="< " suffix="ms" className="kpi-num grad" />
+              <span className="kpi-sub">spatial radius driver matching with 98.9% fulfillment</span>
+            </div>
+            <svg className="spark" viewBox="0 0 300 90" preserveAspectRatio="none">
               <defs>
-                <linearGradient id="pg" x1="0" y1="0" x2="0" y2="1">
-                  <stop offset="0" stopColor="#ff8a5b" stopOpacity="0.45" />
-                  <stop offset="1" stopColor="#ff8a5b" stopOpacity="0" />
+                <linearGradient id="hg" x1="0" y1="0" x2="0" y2="1">
+                  <stop offset="0" stopColor="#eab308" stopOpacity="0.45" />
+                  <stop offset="1" stopColor="#eab308" stopOpacity="0" />
                 </linearGradient>
               </defs>
               <path
                 className="area"
-                d="M0,104 L25,96 L50,64 L75,52 L100,40 L125,58 L150,74 L175,64 L200,46 L225,30 L250,22 L275,42 L300,74 L300,120 L0,120 Z"
-                fill="url(#pg)"
+                d="M0,80 L50,68 L100,52 L150,38 L200,24 L250,18 L300,12 L300,90 L0,90 Z"
+                fill="url(#hg)"
               />
               <path
                 className="draw"
-                d="M0,104 L25,96 L50,64 L75,52 L100,40 L125,58 L150,74 L175,64 L200,46 L225,30 L250,22 L275,42 L300,74"
+                d="M0,80 L50,68 L100,52 L150,38 L200,24 L250,18 L300,12"
                 fill="none"
-                stroke="#ff8a5b"
+                stroke="#eab308"
                 strokeWidth="2.5"
                 strokeLinecap="round"
-                strokeLinejoin="round"
                 pathLength="1"
               />
             </svg>
             <div className="viz-foot">
-              Peak demand concentrated at <strong>1:00 PM &amp; 8:00 PM</strong> — governed dynamic operational staffing.
+              Dynamic spatial radius indexing matches nearest driver in <strong>&lt; 650ms</strong>.
             </div>
           </div>
 
-          {/* Reporting time — before/after columns */}
+          {/* Portda Maritime — Coordination Overhead Reduction */}
           <div className="viz-card glass reveal">
             <div className="viz-head">
               <div className="viz-head-title-group">
-                <span className="viz-app-tag">AskrDukan Operations Engine</span>
-                <span className="viz-title">Automated ETL Pipeline Velocity</span>
+                <span className="viz-app-tag">Portda Maritime Logistics</span>
+                <span className="viz-title">Port Operations Coordination Overhead</span>
               </div>
-              <span className="viz-tool">Excel · Power Query · VBA</span>
+              <span className="viz-tool">NestJS · WebSockets</span>
             </div>
             <div className="time-body">
               <div className="col">
                 <div className="col-track">
                   <div className="col-bar manual" style={{ '--h': '100%' }} />
                 </div>
-                <span className="col-label">Manual Pipeline</span>
+                <span className="col-label">Fragmented Manual</span>
               </div>
               <div className="col">
                 <div className="col-track">
-                  <div className="col-bar auto" style={{ '--h': '30%' }} />
+                  <div className="col-bar auto" style={{ '--h': '45%' }} />
                 </div>
-                <span className="col-label">Automated ETL</span>
+                <span className="col-label">Portda Digital</span>
               </div>
               <div className="time-kpi">
-                <Counter end={70} prefix="−" suffix="%" className="kpi-num grad" />
-                <span>turnaround time reduction</span>
+                <Counter end={55} prefix="−" suffix="%" className="kpi-num grad" />
+                <span>coordination overhead reduction</span>
               </div>
+            </div>
+            <div className="viz-foot">
+              Centralized vessel service state machines replaced fragmented manual email &amp; phone scheduling.
             </div>
           </div>
         </div>

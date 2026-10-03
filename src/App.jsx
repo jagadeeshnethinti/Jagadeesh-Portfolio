@@ -10,6 +10,7 @@ import {
   ArrowRightIcon,
   ExternalLinkIcon,
   LinkedInIcon,
+  GitHubIcon,
   MailIcon,
   PhoneIcon,
   DownloadIcon,
@@ -63,7 +64,7 @@ const SKILLS = [
       'NestJS (Microservices Architecture)',
       'Node.js Runtime',
       'RESTful API Design & OpenAPI',
-      'Cryptographic JWT Authentication & RBAC',
+      'JWT Authentication & RBAC',
       'Real-Time Geospatial Telemetry (WebSockets)',
       'Linux Server Administration',
       'Version Control (Git & GitHub Flow)',
@@ -87,13 +88,13 @@ const SKILLS = [
       'Power BI (DAX, Star Schema Modeling)',
       'Statistical Hypothesis Testing',
       'Jupyter Notebook & Exploratory Data Analysis',
-      'Advanced Excel (Power Query, VBA Automation)',
+      'Advanced Excel (Power Query, Dynamic Modeling)',
     ],
   },
   {
     title: 'System Design & Engineering Methodologies',
     items: [
-      'Full-Lifecycle System Architecture',
+      'Full-Lifecycle Mobile & Backend Systems',
       'Google Play Production Deployment',
       'Application Performance Profiling',
       'Event-Driven Microservices',
@@ -108,14 +109,14 @@ const EXPERIENCE = [
     role: 'Full Stack & AI Software Engineer',
     company: 'Pengwin Solutions Pvt. Ltd., Hyderabad',
     period: 'Jul 2024 – Present',
-    note: 'Core Full-Stack & AI Engineer on a high-velocity 2-person engineering team',
+    note: 'Core Full-Stack & AI Engineer on a 2-person product engineering team',
     points: [
-      'Spearheaded the architectural design and deployment of 11+ mobile client applications and NestJS microservices over 2.3 years, ensuring high system availability and sub-second response times.',
-      'Developed 20+ modular, accessible, and high-performance screens in React Native utilizing Redux Toolkit, slashing redundant re-renders and optimizing memory consumption.',
-      'Integrated enterprise-grade generative AI capabilities via Anthropic Claude and OpenAI / ChatGPT APIs — engineering prompt orchestration layers, output validation guardrails, and autonomous conversational agents.',
-      'Architected resilient authorization microservices incorporating cryptographic JWT authentication, role-based access controls (RBAC), and normalized relational schemas across PostgreSQL and MySQL.',
-      'Engineered automated ETL pipelines and executive Power BI dashboards with custom dimensional DAX measures, providing C-level stakeholders with real-time visibility into revenue, user retention, and campaign metrics.',
-      'Conducted rigorous statistical and behavioral data analysis using advanced SQL (window functions, common table expressions) and Python — identifying SUVs as the primary revenue generator (35% of gross revenue) and driving a 15% efficiency lift in customer acquisition campaigns.',
+      'Architected, built, and shipped 11+ production mobile applications and NestJS backends over 2.3+ years, ensuring high reliability and responsive user experiences.',
+      'Developed 20+ modular, accessible screens in React Native with Redux Toolkit, optimizing state management and eliminating unnecessary re-renders.',
+      'Integrated LLM capabilities via Anthropic Claude and OpenAI APIs — building structured prompt guardrails, SQL schema grounding, and conversational agents.',
+      'Built secure authentication services using JWT and role-based access control (RBAC), with normalized schemas across PostgreSQL and MySQL.',
+      'Engineered automated ETL pipelines and Power BI dashboards with custom DAX measures, giving product and business stakeholders real-time visibility into key metrics.',
+      'Conducted customer behavior analysis on booking data using SQL (window functions, CTEs) and Python — identifying SUVs as the primary revenue driver (35% of gross revenue) to guide fleet strategy.',
     ],
   },
 ]
@@ -129,80 +130,6 @@ const REVENUE_DATA = [
 ]
 
 const PROJECTS = [
-  {
-    name: 'Radii — AI Healthcare Nutrition Platform',
-    category: 'AI Systems · Mobile · Clinical Tech',
-    mono: 'Ra',
-    grad: 'linear-gradient(135deg, #0fbf8f 0%, #0a6d8c 100%)',
-    img: '/projects/radii-icon.svg',
-    stack: ['React Native', 'NestJS', 'Claude API', 'ChatGPT API', 'Python', 'SQL', 'Power BI'],
-    blurb:
-      'Clinical-grade dietary recommendation ecosystem driven by orchestrated Anthropic Claude and OpenAI ChatGPT APIs. Supported by high-throughput NestJS microservices, automated Python nutritional normalization, and administrative Power BI telemetry.',
-    metric: 'Multi-LLM Clinical Engine',
-    access: 'Enterprise AI Platform',
-    telemetry: {
-      badge: 'Multi-LLM Pipeline',
-      title: 'Clinical AI Telemetry',
-      kpis: [
-        { label: 'Inference Latency', value: '240ms', sub: 'Claude & ChatGPT multi-model pipeline' },
-        { label: 'Verification Rate', value: '99.8%', sub: 'zero-hallucination validation' },
-      ],
-      type: 'radii',
-      insight: 'Sub-second multi-turn response streaming with strict clinical prompt guardrails across chronic patient cohorts.',
-    },
-    details: [
-      'Architected a high-concurrency mobile application delivering individualized clinical nutritional regimens synthesized from user diagnostic markers (e.g., Type-2 Diabetes, Hypertension).',
-      'Orchestrated multi-model foundation LLM pipelines (Anthropic Claude & OpenAI ChatGPT) backed by NestJS services to enforce strict clinical prompt guardrails and zero-hallucination thresholds.',
-      'Constructed relational SQL schemas for comprehensive micronutrient catalogs and implemented automated Python data pipelines for nutritional feature engineering.',
-      'Engineered responsive React Native client interfaces with real-time biometric intake validation and sub-second recommendation streaming.',
-      'Designed administrative telemetry dashboards in Power BI monitoring cohort adherence, model interaction latency, and diagnostic feedback loops.',
-    ],
-  },
-  {
-    name: 'SM Lorry — Freight Logistics & Telemetry Ecosystem',
-    category: 'Enterprise Mobile · NestJS · Real-Time GPS · AI',
-    mono: 'SM',
-    grad: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
-    img: '/projects/smlorry-icon.png',
-    shots: ['/projects/smlorry-1.png', '/projects/smlorry-2.png', '/projects/smlorry-3.png'],
-    stack: ['React Native', 'NestJS', 'AI Chatbot', 'SQL', 'Real-Time Tracking', 'Google Play'],
-    blurb:
-      'Dual-application freight logistics ecosystem deployed on Google Play (Simhadri Transport). Features continuous GPS telemetry, asynchronous driver dispatch, event-driven NestJS microservices, and an integrated LLM conversational agent for automated freight quote generation.',
-    metric: '2 Production Apps on Google Play',
-    access: 'Live on Google Play',
-    link: 'https://play.google.com/store/apps/details?id=com.simhadritransport.customer',
-    linkLabel: 'Google Play',
-    telemetry: {
-      badge: 'WebSockets Telemetry',
-      title: 'Freight Dispatch & Fleet GPS',
-      kpis: [
-        { label: 'Dispatch Fulfillment', value: '99.4%', sub: 'real-time WebSockets driver tracking' },
-        { label: 'Response Latency', value: '< 800ms', sub: 'sub-second driver matching' },
-      ],
-      type: 'smlorry',
-      insight: 'Continuous GPS telemetry and geospatial driver tracking across interstate heavy freight routes.',
-    },
-    links: [
-      {
-        label: 'Customer App (Google Play)',
-        badgeLabel: 'Customer App',
-        url: 'https://play.google.com/store/apps/details?id=com.simhadritransport.customer',
-      },
-      {
-        label: 'Driver App (Google Play)',
-        badgeLabel: 'Driver App',
-        url: 'https://play.google.com/store/apps/details?id=com.simhadritransport.driver',
-      },
-    ],
-    details: [
-      'Architected and shipped two production-grade mobile applications on Google Play: the Customer Freight Booking platform and the Driver Logistics Dispatch portal.',
-      'Engineered scalable NestJS backend microservices managing distributed order state machines, driver matching algorithms, and automated freight rate calculations.',
-      'Integrated an autonomous AI conversational agent providing 24/7 client freight consultations and programmatic haul estimations based on distance and vehicle tonnage.',
-      'Structured relational PostgreSQL schemas with spatial indexing for real-time driver tracking, waypoint logging, and multi-checkpoint route optimization.',
-      'Implemented bidirectional WebSockets and real-time geospatial telemetry for live vehicle coordinates streaming during active transport.',
-      'Published on Google Play Store with verified active production distribution.',
-    ],
-  },
   {
     name: 'Hailo Cabs — On-Demand Ride Hailing & Mobility Ecosystem',
     category: 'Ride Hailing · Real-Time Dispatch · Multi-Modal Mobility · Google Play',
@@ -289,8 +216,53 @@ const PROJECTS = [
       'Constructed a dual-sided marketplace architecture enabling ship owners and agents to discover certified port vendors, request ship maintenance, supplies, and logistics, and track service status during port calls.',
       'Engineered port-geofenced service catalogs in PostgreSQL with spatial indexing, mapping specialized maritime contractors to active commercial and cargo port terminals.',
       'Implemented real-time bidirectional order state machines and WebSockets dispatch for vessel service RFQs, vendor bidding, schedule confirmation, and operational milestone tracking.',
-      'Designed high-availability NestJS backend APIs with strict JWT cryptographic authentication, role-based access control (RBAC), and offline-resilient Redux Toolkit state normalization.',
+      'Designed high-availability NestJS backend APIs with JWT authentication, role-based access control (RBAC), and offline-resilient Redux Toolkit state normalization.',
       'Published both Customer and Vendor platforms on Google Play Store with active commercial maritime adoption.',
+    ],
+  },
+  {
+    name: 'SM Lorry — Freight Logistics & Telemetry Ecosystem',
+    category: 'Enterprise Mobile · NestJS · Real-Time GPS · AI',
+    mono: 'SM',
+    grad: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+    img: '/projects/smlorry-icon.png',
+    shots: ['/projects/smlorry-1.png', '/projects/smlorry-2.png', '/projects/smlorry-3.png'],
+    stack: ['React Native', 'NestJS', 'AI Chatbot', 'SQL', 'Real-Time Tracking', 'Google Play'],
+    blurb:
+      'Dual-application freight logistics ecosystem deployed on Google Play (Simhadri Transport). Features continuous GPS telemetry, asynchronous driver dispatch, event-driven NestJS microservices, and an integrated LLM conversational agent for automated freight quote generation.',
+    metric: '2 Production Apps on Google Play',
+    access: 'Live on Google Play',
+    link: 'https://play.google.com/store/apps/details?id=com.simhadritransport.customer',
+    linkLabel: 'Google Play',
+    telemetry: {
+      badge: 'WebSockets Telemetry',
+      title: 'Freight Dispatch & Fleet GPS',
+      kpis: [
+        { label: 'Dispatch Fulfillment', value: '99.4%', sub: 'real-time WebSockets driver tracking' },
+        { label: 'Response Latency', value: '< 800ms', sub: 'sub-second driver matching' },
+      ],
+      type: 'smlorry',
+      insight: 'Continuous GPS telemetry and geospatial driver tracking across interstate heavy freight routes.',
+    },
+    links: [
+      {
+        label: 'Customer App (Google Play)',
+        badgeLabel: 'Customer App',
+        url: 'https://play.google.com/store/apps/details?id=com.simhadritransport.customer',
+      },
+      {
+        label: 'Driver App (Google Play)',
+        badgeLabel: 'Driver App',
+        url: 'https://play.google.com/store/apps/details?id=com.simhadritransport.driver',
+      },
+    ],
+    details: [
+      'Architected and shipped two production-grade mobile applications on Google Play: the Customer Freight Booking platform and the Driver Logistics Dispatch portal.',
+      'Engineered scalable NestJS backend microservices managing distributed order state machines, driver matching algorithms, and automated freight rate calculations.',
+      'Integrated an AI conversational agent providing 24/7 client freight consultations and programmatic haul estimations based on distance and vehicle tonnage.',
+      'Structured relational PostgreSQL schemas with spatial indexing for real-time driver tracking, waypoint logging, and multi-checkpoint route optimization.',
+      'Implemented bidirectional WebSockets and real-time geospatial telemetry for live vehicle coordinates streaming during active transport.',
+      'Published on Google Play Store with verified active production distribution.',
     ],
   },
   {
@@ -332,6 +304,39 @@ const PROJECTS = [
     ],
   },
   {
+    name: 'CarHive — Fleet Logistics & Telemetry Platform',
+    category: 'Mobile Architecture · Full Stack · Telemetry',
+    mono: 'Ch',
+    grad: 'linear-gradient(135deg, #2a6df0 0%, #6a3df0 100%)',
+    img: '/projects/carhive-icon.png',
+    shots: ['/projects/carhive-1.png', '/projects/carhive-2.png', '/projects/carhive-3.png'],
+    stack: ['React Native', 'Redux Toolkit', 'JWT & RBAC', 'SQL', 'Power BI'],
+    blurb:
+      'Production fleet rental mobile application on Google Play engineered with real-time vehicle dispatch, secure JWT & RBAC session management, and normalized Redux Toolkit state architecture. Backed by relational telemetry revealing SUVs as the 35% primary revenue driver.',
+    metric: 'Live on Google Play Store',
+    access: 'Live on Google Play',
+    link: 'https://play.google.com/store/apps/details?id=com.carhive.user',
+    linkLabel: 'Google Play',
+    chart: 'revenue',
+    telemetry: {
+      badge: 'Power BI · DAX',
+      title: 'Fleet Segment Revenue Telemetry',
+      kpis: [
+        { label: 'Primary Revenue Driver', value: '35%', sub: 'SUV fleet gross revenue contribution' },
+        { label: 'Campaign Efficiency', value: '+15%', sub: 'targeted customer acquisition lift' },
+      ],
+      type: 'revenue',
+      insight: 'Discovered that SUV inventory generated 35% of platform gross revenue, directly steering fleet acquisition.',
+    },
+    details: [
+      'Engineered a production mobile fleet rental application featuring real-time vehicle inventory synchronization, reservations, and secure JWT authentication & RBAC.',
+      'Optimized client-side rendering performance via Redux Toolkit selector memoization, eliminating redundant component lifecycle re-renders across high-traffic screens.',
+      'Formulated complex SQL queries (window functions, recursive CTEs) analyzing vehicle turnover rate and fleet utilization patterns.',
+      'Engineered executive Power BI business intelligence dashboards demonstrating that SUV inventory represented 35% of platform gross revenue, directly steering fleet acquisition.',
+      'Published on Google Play Store with active production distribution.',
+    ],
+  },
+  {
     name: 'Serum Healthcare — Clinical Diagnostics Platform',
     category: 'Mobile Systems · Healthcare · Production',
     mono: 'Se',
@@ -340,7 +345,7 @@ const PROJECTS = [
     shots: ['/projects/serum-1.png', '/projects/serum-2.png', '/projects/serum-3.png'],
     stack: ['React Native', 'NestJS', 'Redux Toolkit', 'REST APIs', 'SQL'],
     blurb:
-      'High-availability healthcare diagnostics platform deployed on Google Play, streamlining doorstep phlebotomy dispatch and automated digital pathology report delivery. Architected with React Native, resilient offline-tolerant state management, and HIPAA-conscious REST APIs.',
+      'High-availability healthcare diagnostics platform deployed on Google Play, streamlining doorstep phlebotomy dispatch and automated digital pathology report delivery. Architected with React Native, resilient offline-tolerant state management, and secure REST APIs.',
     metric: 'Live on Google Play Store',
     access: 'Live on Google Play',
     link: 'https://play.google.com/store/apps/details?id=in.serumhealthcare',
@@ -353,13 +358,13 @@ const PROJECTS = [
         { label: 'Delivery Turnaround', value: '−45%', sub: 'automated digital pathology delivery' },
       ],
       type: 'serum',
-      insight: 'Accelerated patient diagnostic report delivery with HIPAA-compliant encrypted pipelines.',
+      insight: 'Accelerated patient diagnostic report delivery with secure encrypted pipelines.',
     },
     details: [
       'Engineered the consumer-facing React Native mobile architecture for doorstep phlebotomy dispatch and multi-parameter diagnostic test scheduling.',
-      'Constructed end-to-end encrypted medical report distribution workflows enabling patients to securely inspect, filter, and archive digital diagnostic records.',
+      'Constructed encrypted medical report distribution workflows enabling patients to securely inspect, filter, and archive digital diagnostic records.',
       'Implemented resilient offline-tolerant state normalization using Redux Toolkit to guarantee seamless order submission under intermittent network connectivity.',
-      'Integrated token-authenticated RESTful services upholding strict healthcare regulatory compliance and data confidentiality standards.',
+      'Integrated token-authenticated RESTful services upholding healthcare standards and data confidentiality.',
       'Published on Google Play Store with verified active patient adoption.',
     ],
   },
@@ -397,98 +402,64 @@ const PROJECTS = [
     ],
   },
   {
-    name: 'CarHive — Fleet Logistics & Telemetry Platform',
-    category: 'Mobile Architecture · Full Stack · Telemetry',
-    mono: 'Ch',
-    grad: 'linear-gradient(135deg, #2a6df0 0%, #6a3df0 100%)',
-    img: '/projects/carhive-icon.png',
-    shots: ['/projects/carhive-1.png', '/projects/carhive-2.png', '/projects/carhive-3.png'],
-    stack: ['React Native', 'Redux Toolkit', 'JWT Auth', 'SQL', 'Power BI'],
-    blurb:
-      'Production fleet rental mobile application on Google Play engineered with real-time vehicle dispatch, cryptographic JWT session management, and normalized Redux Toolkit state architecture. Backed by relational telemetry revealing SUVs as the 35% primary revenue driver.',
-    metric: 'Live on Google Play Store',
-    access: 'Live on Google Play',
-    link: 'https://play.google.com/store/apps/details?id=com.carhive.user',
-    linkLabel: 'Google Play',
-    chart: 'revenue',
-    telemetry: {
-      badge: 'Power BI · DAX',
-      title: 'Fleet Segment Revenue Telemetry',
-      kpis: [
-        { label: 'Primary Revenue Driver', value: '35%', sub: 'SUV fleet gross revenue contribution' },
-        { label: 'Campaign Efficiency', value: '+15%', sub: 'targeted customer acquisition lift' },
-      ],
-      type: 'revenue',
-      insight: 'Discovered that SUV inventory generated 35% of platform gross revenue, directly steering fleet acquisition.',
-    },
-    details: [
-      'Engineered a mission-critical mobile fleet rental application featuring real-time vehicle inventory synchronization, reservations, and cryptographic JWT authentication.',
-      'Optimized client-side rendering performance via Redux Toolkit selector memoization, eliminating redundant component lifecycle re-renders across high-traffic screens.',
-      'Formulated complex SQL queries (window functions, recursive CTEs) analyzing vehicle turnover rate and fleet utilization patterns.',
-      'Engineered executive Power BI business intelligence dashboards demonstrating that SUV inventory represented 35% of platform gross revenue, directly steering fleet acquisition.',
-      'Published on Google Play Store with active production distribution.',
-    ],
-  },
-  {
-    name: 'Retail Sales Performance Tracker',
-    category: 'Enterprise Automation · ETL · Operations',
-    mono: 'Rt',
-    grad: 'linear-gradient(135deg, #b07cff 0%, #6a3df0 100%)',
+    name: 'ScreenTime — Mobile Rewards & Engagement App',
+    category: 'Consumer Rewards · Mobile Architecture · Google Play',
+    mono: 'St',
+    grad: 'linear-gradient(135deg, #f97316 0%, #ea580c 100%)',
     img: '/projects/retail-icon.png',
     shots: ['/projects/retail-1.png', '/projects/retail-2.png', '/projects/retail-3.png'],
-    stack: ['React Native', 'Excel', 'Power Query', 'VBA', 'SQL'],
+    stack: ['React Native', 'Redux Toolkit', 'REST APIs', 'Node.js', 'Google Play'],
     blurb:
-      'Automated enterprise business operations tracker consolidating multi-source transactional datasets via Power Query ETL pipelines, dynamic dimensional models, and programmatic VBA macros — accelerating reporting velocity by 70%.',
-    metric: '−70% Report Generation Turnaround',
+      'Consumer engagement and rewards mobile application deployed on Google Play (AskrDukan ScreenTime). Features interactive daily tasks, mission-box gamification, a real-time coins ledger, and multi-vendor shopping rewards integration.',
+    metric: 'Live on Google Play Store',
     access: 'Live on Google Play',
     link: 'https://play.google.com/store/apps/details?id=com.askrdukan.screentime',
     linkLabel: 'Google Play',
-    chart: 'time',
     telemetry: {
-      badge: 'Power Query · VBA',
-      title: 'Automated ETL Pipeline Telemetry',
+      badge: 'Rewards Telemetry',
+      title: 'Task Verification & Coin Ledger Sync',
       kpis: [
-        { label: 'Turnaround Reduction', value: '−70%', sub: 'automated multi-source ETL pipeline' },
-        { label: 'Monthly Records', value: '50k+', sub: 'consolidated transactional logs' },
+        { label: 'Task Verification', value: '< 280ms', sub: 'instant reward processing' },
+        { label: 'Ledger Consistency', value: '99.9%', sub: 'real-time wallet & coin state' },
       ],
-      type: 'time',
-      insight: 'Replaced manual workbook compilation with programmatic VBA and Power Query pipelines.',
+      type: 'screentime',
+      insight: 'Streamlined task verification pipelines and real-time state synchronization for rewards ledger.',
     },
     details: [
-      'Architected an automated multi-source ETL pipeline leveraging Power Query to ingest and consolidate distributed monthly sales transactional logs without manual intervention.',
-      'Engineered dynamic dimensional financial models incorporating dynamic lookup indexing, conditional thresholds, and anomaly detection.',
-      'Automated end-to-end report generation and executive workbook compilation via programmatic VBA macros, reducing processing overhead by over 70%.',
-      'Authored comprehensive technical and operational documentation enabling self-service maintenance across cross-functional business stakeholders.',
-      'Published on Google Play Store with enterprise adoption.',
+      'Architected and shipped the ScreenTime mobile rewards application on Google Play for the AskrDukan shopping community.',
+      'Built interactive mission boxes and task completion flows in React Native, allowing users to complete engagement activities and accumulate verified shopping rewards.',
+      'Implemented secure authentication, session management, and state normalization with Redux Toolkit for real-time wallet and coin balance updates.',
+      'Integrated backend REST APIs for multi-category shopping promotions, dynamic task feeds, and user referral tracking.',
+      'Published on Google Play Store with active consumer distribution.',
     ],
   },
   {
-    name: 'Pizza Sales Customer Intelligence',
-    category: 'SQL Engineering · Behavioral Analytics · BI',
-    mono: 'Pz',
-    grad: 'linear-gradient(135deg, #ff8a5b 0%, #d6263b 100%)',
-    img: '/projects/pizza-icon.svg',
-    stack: ['SQL', 'Python', 'Power BI', 'Tableau', 'Excel'],
+    name: 'Radii — AI Healthcare Nutrition Platform',
+    category: 'AI Systems · Mobile · Clinical Tech',
+    mono: 'Ra',
+    grad: 'linear-gradient(135deg, #0fbf8f 0%, #0a6d8c 100%)',
+    img: '/projects/radii-icon.svg',
+    stack: ['React Native', 'NestJS', 'Claude API', 'ChatGPT API', 'Python', 'SQL', 'Power BI'],
     blurb:
-      'End-to-end transactional data engineering and exploratory data analysis across 12+ months of enterprise sales logs. Formulated advanced SQL models, Python data validation pipelines, and executive Power BI dashboards to optimize inventory allocation and demand forecasting.',
-    metric: '+20% Reporting Accuracy',
-    access: 'Analytical Case Study',
-    chart: 'pizza',
+      'Clinical-grade dietary recommendation ecosystem driven by Anthropic Claude and OpenAI APIs. Supported by high-throughput NestJS services, automated Python nutritional normalization, and administrative Power BI telemetry.',
+    metric: 'Multi-LLM Clinical Engine',
+    access: 'Enterprise AI Platform',
     telemetry: {
-      badge: 'Tableau · SQL',
-      title: 'Hourly Demand & Customer CLV',
+      badge: 'Multi-LLM Pipeline',
+      title: 'Clinical AI Telemetry',
       kpis: [
-        { label: 'Peak Demand Windows', value: '1 PM & 8 PM', sub: 'operational staffing alignment' },
-        { label: 'Downstream Accuracy', value: '+20%', sub: 'SQL & Python data validation' },
+        { label: 'Inference Latency', value: '240ms', sub: 'Claude & ChatGPT multi-model pipeline' },
+        { label: 'Schema Validation', value: '99.8%', sub: 'grounded with SQL nutrition database' },
       ],
-      type: 'pizza',
-      insight: 'Mapped temporal order clusters and formulated CLV models to optimize operational margins.',
+      type: 'radii',
+      insight: 'Fast multi-turn response streaming with strict clinical prompt guardrails and database schema validation.',
     },
     details: [
-      'Conducted deep exploratory data analysis on 12+ months of transactional sales records, identifying top-margin SKUs, temporal demand clustering, and purchase frequency distributions.',
-      'Engineered production Power BI and Tableau dashboards tracking revenue velocity, hourly order distributions, and regional performance indicators.',
-      'Authored complex analytical SQL scripts (multi-table joins, subqueries, aggregation windows) establishing Customer Lifetime Value (CLV) and Average Order Value (AOV).',
-      'Implemented Python (Pandas/NumPy) data cleaning pipelines mitigating data drift and anomalies, establishing a ~20% improvement in downstream reporting accuracy.',
+      'Architected a mobile application delivering individualized clinical nutritional regimens synthesized from user diagnostic markers (e.g., Type-2 Diabetes, Hypertension).',
+      'Orchestrated multi-model foundation LLM pipelines (Anthropic Claude & OpenAI ChatGPT) backed by NestJS services, grounding outputs with structured SQL schemas and clinical prompt guardrails.',
+      'Constructed relational SQL schemas for comprehensive micronutrient catalogs and implemented automated Python data pipelines for nutritional feature engineering.',
+      'Engineered responsive React Native client interfaces with real-time biometric intake validation and sub-second recommendation streaming.',
+      'Designed administrative telemetry dashboards in Power BI monitoring cohort adherence, model interaction latency, and diagnostic feedback loops.',
     ],
   },
 ]
@@ -567,19 +538,63 @@ function useCardTilt() {
 }
 
 const NAV_LINKS = [
-  { label: 'About', id: 'about', icon: UserNavIcon },
+  { label: 'Projects', id: 'projects', icon: LayersNavIcon },
   { label: 'Telemetry', id: 'dashboards', icon: PowerBIIcon },
   { label: 'Skills', id: 'skills', icon: CpuNavIcon },
   { label: 'Experience', id: 'experience', icon: BriefcaseNavIcon },
-  { label: 'Projects', id: 'projects', icon: LayersNavIcon },
   {
-    label: 'Academics & Certs',
+    label: 'Academics',
     shortLabel: 'Academics',
     drawerLabel: 'Academics & Certifications',
     id: 'credentials',
     icon: AcademicNavIcon,
   },
   { label: 'Contact', id: 'contact', icon: ChatNavIcon },
+]
+
+const NEED_POINTS = [
+  {
+    id: 'projects',
+    title: 'Play Store Mobile Apps',
+    desc: '8+ Google Play releases · Dual app ecosystems',
+    badge: '11+ Apps',
+    icon: GooglePlayIcon,
+  },
+  {
+    id: 'dashboards',
+    title: 'Production Telemetry',
+    desc: 'Sub-second dispatch · Power BI DAX KPIs',
+    badge: 'Live Metrics',
+    icon: PowerBIIcon,
+  },
+  {
+    id: 'skills',
+    title: 'GenAI & Full-Stack Stack',
+    desc: 'Claude, ChatGPT, React Native, NestJS, SQL',
+    badge: 'Core Tech',
+    icon: CpuNavIcon,
+  },
+  {
+    id: 'experience',
+    title: 'Engineering Track Record',
+    desc: 'Core mobile developer at Pengwin Solutions',
+    badge: '2.3+ Yrs',
+    icon: BriefcaseNavIcon,
+  },
+  {
+    id: 'credentials',
+    title: 'Credentials & Academics',
+    desc: 'Microsoft Certified Power BI · B.Sc. AI & Robotics',
+    badge: 'Verified',
+    icon: AcademicNavIcon,
+  },
+  {
+    id: 'contact',
+    title: 'Direct Engineering Contact',
+    desc: 'Email, WhatsApp, Phone, GitHub, LinkedIn',
+    badge: 'Open to Work',
+    icon: ChatNavIcon,
+  },
 ]
 
 const THEMES = [
@@ -917,23 +932,16 @@ function Nav({ motion, onToggleMotion }) {
 
           {/* Desktop Controls & CTA */}
           <div className="desktop-nav-actions">
-            <button
-              className={`motion-toggle ${motion ? 'active' : ''}`}
-              onClick={onToggleMotion}
-              aria-label={motion ? 'Pause ambient motion' : 'Play ambient motion'}
-              title={motion ? 'Pause ambient motion' : 'Play ambient motion'}
+            <a
+              className="nav-icon-link"
+              href="https://github.com/jagadeeshnethinti"
+              target="_blank"
+              rel="noreferrer"
+              title="GitHub Profile"
+              aria-label="GitHub Profile"
             >
-              {motion ? (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#38bdf8" aria-hidden="true">
-                  <rect x="5" y="3" width="4.5" height="18" rx="2" />
-                  <rect x="14.5" y="3" width="4.5" height="18" rx="2" />
-                </svg>
-              ) : (
-                <svg width="12" height="12" viewBox="0 0 24 24" fill="#34d399" aria-hidden="true" style={{ marginLeft: '1px' }}>
-                  <path d="M6 4.5v15c0 .85.92 1.38 1.66.95l12-7.5c.74-.46.74-1.54 0-2l-12-7.5C6.92 3.12 6 3.65 6 4.5z" />
-                </svg>
-              )}
-            </button>
+              <GitHubIcon size={15} style={{ marginRight: 0 }} />
+            </a>
 
             <ThemePicker
               theme={theme}
@@ -944,7 +952,7 @@ function Nav({ motion, onToggleMotion }) {
 
             <a className="nav-cta" href={RESUME} download>
               <DownloadIcon size={14} style={{ marginRight: '6px' }} />
-              <span>Curriculum Vitae</span>
+              <span>Technical CV</span>
             </a>
           </div>
 
@@ -1105,17 +1113,28 @@ function Nav({ motion, onToggleMotion }) {
               <span>Download Technical CV</span>
             </a>
             <a
+              className="drawer-cta drawer-github-btn"
+              href="https://github.com/jagadeeshnethinti"
+              target="_blank"
+              rel="noreferrer"
+              onClick={() => setOpen(false)}
+            >
+              <GitHubIcon size={16} />
+              <span>GitHub Profile</span>
+            </a>
+            <a
               className="drawer-cta drawer-linkedin-btn"
               href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
               target="_blank"
               rel="noreferrer"
+              onClick={() => setOpen(false)}
             >
               <LinkedInIcon size={16} />
               <span>Connect on LinkedIn</span>
             </a>
             <a
               className="drawer-cta drawer-email-btn"
-              href="mailto:jagadeeshnethinti944@gmail.com"
+              href="mailto:jagadeeshnethinti809@gmail.com"
               onClick={() => setOpen(false)}
             >
               <MailIcon size={16} />
@@ -1135,11 +1154,10 @@ function Nav({ motion, onToggleMotion }) {
 }
 
 const ROTATE_WORDS = [
-  'enterprise React Native mobile apps',
-  'mission-critical AI architectures',
-  'scalable NestJS microservices',
-  'autonomous LLM orchestration',
-  'real-time geospatial telemetry',
+  'production React Native mobile apps',
+  'high-performance NestJS backends',
+  'practical Claude & ChatGPT AI systems',
+  'real-time WebSockets & GPS tracking',
   'cross-platform iOS & Android apps',
 ]
 
@@ -1458,60 +1476,32 @@ function AppMiniChart({ type }) {
     )
   }
 
-  if (type === 'time') {
+  if (type === 'screentime') {
     return (
       <div className="mini-chart">
         <div className="mini-bars-header">
-          <span>ETL Processing &amp; Reporting Velocity</span>
-          <span style={{ color: '#b07cff' }}>−70% Reduction</span>
+          <span>Task Verification &amp; Coin Settlement</span>
+          <span style={{ color: '#f97316' }}>Sub-300ms</span>
         </div>
         <div className="mini-bar-list">
           <div className="mini-bar-item">
-            <span className="mini-lbl">Manual ETL</span>
+            <span className="mini-lbl">Task Check</span>
             <div className="mini-track">
-              <div className="mini-fill" style={{ width: '100%', background: 'rgba(255,255,255,0.18)' }} />
+              <div className="mini-fill" style={{ width: '85%', background: 'linear-gradient(90deg, #f97316, #ea580c)' }} />
             </div>
-            <span className="mini-val">4.5 hrs</span>
+            <span className="mini-val" style={{ color: '#f97316', fontWeight: 700 }}>280ms</span>
           </div>
           <div className="mini-bar-item">
-            <span className="mini-lbl">Automated</span>
+            <span className="mini-lbl">Wallet Sync</span>
             <div className="mini-track">
-              <div className="mini-fill" style={{ width: '30%', background: 'linear-gradient(90deg, #b07cff, #6a3df0)' }} />
+              <div className="mini-fill" style={{ width: '99%', background: 'linear-gradient(90deg, #34d399, #059669)' }} />
             </div>
-            <span className="mini-val" style={{ color: '#b07cff', fontWeight: 700 }}>1.3 hrs</span>
+            <span className="mini-val" style={{ color: '#34d399', fontWeight: 700 }}>99.9%</span>
           </div>
         </div>
         <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--muted)', marginTop: '2px' }}>
-          <span>50k+ Transaction Logs</span>
-          <span style={{ color: '#b07cff', fontWeight: 600 }}>VBA &amp; Power Query Pipeline</span>
-        </div>
-      </div>
-    )
-  }
-
-  if (type === 'pizza') {
-    return (
-      <div className="mini-chart">
-        <div className="mini-bars-header">
-          <span>Temporal Order Clustering &amp; CLV</span>
-          <span style={{ color: '#ff8a5b' }}>Dual Peaks</span>
-        </div>
-        <svg viewBox="0 0 280 60" preserveAspectRatio="none" style={{ height: '54px', width: '100%', margin: '4px 0' }}>
-          <defs>
-            <linearGradient id="pizMiniGrad" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#ff8a5b" stopOpacity="0.45" />
-              <stop offset="1" stopColor="#ff8a5b" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path d="M0,52 L25,48 L50,32 L75,26 L100,20 L125,29 L150,37 L175,32 L200,23 L225,15 L250,11 L275,21 L280,37 L280,60 L0,60 Z" fill="url(#pizMiniGrad)" />
-          <path d="M0,52 L25,48 L50,32 L75,26 L100,20 L125,29 L150,37 L175,32 L200,23 L225,15 L250,11 L275,21 L280,37" fill="none" stroke="#ff8a5b" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" />
-        </svg>
-        <div style={{ display: 'flex', justifyContent: 'space-between', fontSize: '0.68rem', color: 'var(--muted)' }}>
-          <span>11 AM</span>
-          <span style={{ color: '#ff8a5b', fontWeight: 600 }}>Lunch (1 PM)</span>
-          <span>4 PM</span>
-          <span style={{ color: '#ff8a5b', fontWeight: 600 }}>Dinner (8 PM)</span>
-          <span>11 PM</span>
+          <span>Redux State Sync</span>
+          <span style={{ color: '#f97316', fontWeight: 600 }}>Active Google Play App</span>
         </div>
       </div>
     )
@@ -1553,7 +1543,45 @@ function ProjectCard({ p, i, setActiveProject, globalMode }) {
         )}
         <span className="thumb-mono">{p.mono}</span>
         <span className="thumb-metric">{p.metric}</span>
-        {p.link && <span className="live-badge">Live</span>}
+        <div className="thumb-top-actions" onClick={(e) => e.stopPropagation()}>
+          {p.links ? (
+            <div className="thumb-store-group">
+              {p.links.map((lk) => (
+                <a
+                  key={lk.url}
+                  className="thumb-store-btn compact"
+                  href={lk.url}
+                  target="_blank"
+                  rel="noreferrer"
+                  title={`Open ${lk.label} on Google Play Store`}
+                  aria-label={`Open ${lk.label} on Google Play Store`}
+                >
+                  <GooglePlayIcon size={12} />
+                  <span>{lk.badgeLabel || lk.label}</span>
+                </a>
+              ))}
+            </div>
+          ) : p.link ? (
+            <a
+              className="thumb-store-btn"
+              href={p.link}
+              target="_blank"
+              rel="noreferrer"
+              title={`Open ${p.name} on Google Play Store`}
+              aria-label={`Open ${p.name} on Google Play Store`}
+            >
+              <span className="live-pulse-dot" />
+              <GooglePlayIcon size={13} />
+              <span>{p.linkLabel || 'Play Store'}</span>
+              <ExternalLinkIcon size={10} className="thumb-store-arrow" />
+            </a>
+          ) : (
+            <span className="thumb-enterprise-badge">
+              <span className="enterprise-sparkle">✦</span>
+              <span>{p.access || 'Enterprise AI'}</span>
+            </span>
+          )}
+        </div>
       </div>
 
       <div className="project-body">
@@ -1636,37 +1664,28 @@ function ProjectCard({ p, i, setActiveProject, globalMode }) {
 
         <div className="project-foot">
           {p.links ? (
-            <div className="dual-links" onClick={(e) => e.stopPropagation()}>
-              {p.links.map((lk) => (
-                <a
-                  key={lk.url}
-                  className="store-badge"
-                  href={lk.url}
-                  target="_blank"
-                  rel="noreferrer"
-                >
-                  <GooglePlayIcon size={13} />
-                  <span>{lk.badgeLabel || lk.label}</span>
-                </a>
-              ))}
+            <div className="verified-live-tag">
+              <span className="live-pulse-dot" />
+              <span>2 Production Releases</span>
             </div>
           ) : p.link ? (
             <a
-              className="store-badge"
+              className="verified-live-tag clickable"
               href={p.link}
               target="_blank"
               rel="noreferrer"
               onClick={(e) => e.stopPropagation()}
+              title={`Open ${p.name} on Google Play`}
             >
-              <GooglePlayIcon size={13} />
-              <span>{p.linkLabel}</span>
+              <span className="live-pulse-dot" />
+              <span>Live on Google Play</span>
             </a>
           ) : (
             <span className="access-tag">{p.access}</span>
           )}
-          <span className="project-link">
-            <span>{tab === 'telemetry' ? 'Inspect Telemetry' : 'Explore Architecture'}</span>
-            <ArrowRightIcon size={13} color="var(--cyan)" />
+          <span className="project-link-btn" title="View app screenshots & details">
+            <span>{tab === 'telemetry' ? 'Inspect Telemetry' : 'View App Screenshots'}</span>
+            <ArrowRightIcon size={13} />
           </span>
         </div>
       </div>
@@ -1747,12 +1766,72 @@ function ScrollToTop() {
   )
 }
 
+function DeepLinkAnchor({ id, onCopy }) {
+  return (
+    <button
+      type="button"
+      className="deep-link-anchor"
+      onClick={(e) => {
+        e.stopPropagation()
+        onCopy?.(id)
+      }}
+      title={`Copy deep link to #${id}`}
+      aria-label={`Copy deep link to #${id}`}
+    >
+      <span className="hash-symbol">#</span>
+    </button>
+  )
+}
+
 export default function App() {
   useReveal()
   useCardTilt()
   const scrollRef = useRef(null)
   const [activeProject, setActiveProject] = useState(null)
   const [globalMode, setGlobalMode] = useState('all')
+  const [toastMsg, setToastMsg] = useState('')
+  const toastTimeoutRef = useRef(null)
+
+  const showToast = (msg) => {
+    if (toastTimeoutRef.current) clearTimeout(toastTimeoutRef.current)
+    setToastMsg(msg)
+    toastTimeoutRef.current = setTimeout(() => {
+      setToastMsg('')
+    }, 2400)
+  }
+
+  const handleNeedPointClick = (e, id) => {
+    e.preventDefault()
+    const target = document.getElementById(id)
+    if (target) {
+      window.history.pushState(null, '', `#${id}`)
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' })
+      target.classList.add('deep-link-highlight')
+      setTimeout(() => target.classList.remove('deep-link-highlight'), 1800)
+      showToast(`Jumped to #${id}`)
+    }
+  }
+
+  const handleCopyDeepLink = (id) => {
+    const url = `${window.location.origin}${window.location.pathname}#${id}`
+    navigator.clipboard?.writeText(url)
+    window.history.pushState(null, '', `#${id}`)
+    showToast(`Deep link copied: #${id}`)
+  }
+
+  useEffect(() => {
+    if (window.location.hash) {
+      const id = window.location.hash.replace('#', '')
+      const el = document.getElementById(id)
+      if (el) {
+        setTimeout(() => {
+          el.scrollIntoView({ behavior: 'smooth', block: 'start' })
+          el.classList.add('deep-link-highlight')
+          setTimeout(() => el.classList.remove('deep-link-highlight'), 1800)
+        }, 350)
+      }
+    }
+  }, [])
 
   const [motion, setMotion] = useState(() => {
     const saved = localStorage.getItem('bg-motion')
@@ -1805,22 +1884,24 @@ export default function App() {
               <span className="hero-name-context">Jagadesh Nethinti</span>
               <span className="hero-title-separator">—</span>
               <br className="hero-title-break" />
-              <span className="hero-main-phrase">Architecting Enterprise Mobile Apps &amp; AI Platforms.</span>
+              <span className="hero-main-phrase">
+                Architecting <span className="hero-accent-text">Enterprise Mobile Apps</span> &amp; <span className="hero-accent-text">AI Platforms</span>.
+              </span>
             </h1>
 
             <p className="hero-build">
-              Architecting <Rotator /> engineered for mission-critical scale.
+              Architecting <Rotator /> with verified production telemetry.
             </p>
 
             <p className="hero-lede">
-              <strong>Jagadesh Nethinti</strong> is a Professional Mobile App Developer and Senior Full-Stack AI Systems Engineer with <span className="hl">2.3+ years</span> of
-              production experience architecting <span className="hl">17+ mobile systems &amp; microservices</span> using
-              React Native, NestJS, and Node.js. Specializing in cross-platform mobile apps (11+ Google Play releases), autonomous multi-LLM orchestration (Anthropic Claude &amp; ChatGPT),
-              edge inference (Ollama &amp; Hugging Face), cryptographic auth, and real-time geospatial telemetry.
+              <strong>Jagadesh Nethinti</strong> is a Full-Stack Mobile &amp; AI Engineer with <span className="hl">2.3+ years</span> of
+              production experience shipping <span className="hl">11+ Google Play apps</span> and scalable backend systems using
+              React Native, NestJS, and PostgreSQL. Operating as a core engineer on a 2-person team at Pengwin Solutions, specializing in cross-platform mobile apps, practical LLM integrations (Claude &amp; ChatGPT),
+              local AI models (Ollama), secure JWT &amp; RBAC, and real-time geospatial tracking.
             </p>
 
             <div className="hero-actions">
-              <a className="btn primary" href="#projects">
+              <a className="btn primary" href="#projects" onClick={(e) => handleNeedPointClick(e, 'projects')}>
                 <span>Explore Production Systems</span>
                 <ArrowRightIcon size={15} style={{ marginLeft: '6px' }} />
               </a>
@@ -1828,119 +1909,140 @@ export default function App() {
                 <DownloadIcon size={15} style={{ marginRight: '6px' }} />
                 <span>Download Technical CV</span>
               </a>
-              <a className="btn ghost" href="#contact">
+              <a className="btn ghost" href="#contact" onClick={(e) => handleNeedPointClick(e, 'contact')}>
                 <MailIcon size={15} style={{ marginRight: '6px' }} />
                 <span>Get In Touch</span>
               </a>
             </div>
 
+            {/* Direct Deep Links for Need Points */}
+            <div className="need-points-hub" aria-label="Direct deep links by topic of interest">
+              <div className="need-points-header">
+                <span className="need-points-tag">
+                  <span className="need-points-live-dot" />
+                  DIRECT DEEP LINKS
+                </span>
+                <span className="need-points-hint">Jump directly to verified engineering proof points</span>
+              </div>
+              <div className="need-points-grid">
+                {NEED_POINTS.map((pt) => {
+                  const IconComp = pt.icon
+                  return (
+                    <a
+                      key={pt.id}
+                      href={`#${pt.id}`}
+                      className="need-point-chip"
+                      onClick={(e) => handleNeedPointClick(e, pt.id)}
+                      title={`Jump to ${pt.title}`}
+                    >
+                      <div className="need-point-icon-wrap">
+                        <IconComp size={15} />
+                      </div>
+                      <div className="need-point-content">
+                        <span className="need-point-title">{pt.title}</span>
+                        <span className="need-point-sub">{pt.desc}</span>
+                      </div>
+                      <span className="need-point-badge">{pt.badge}</span>
+                      <ChevronRightIcon size={13} className="need-point-arrow" />
+                    </a>
+                  )
+                })}
+              </div>
+            </div>
+
             <div className="hero-metrics-grid">
               <div className="hero-metric-card">
-                <span className="metric-val">17+</span>
-                <span className="metric-label">Production Client Apps &amp; NestJS Backends Delivered</span>
-              </div>
-              <div className="hero-metric-card">
                 <span className="metric-val">11+</span>
-                <span className="metric-label">Verified Production Releases on Google Play Store</span>
+                <span className="metric-label">Production Apps Shipped on Google Play Store</span>
               </div>
               <div className="hero-metric-card">
-                <span className="metric-val">Multi-LLM</span>
-                <span className="metric-label">Claude, GPT-4 &amp; Local Quantized Inference (Ollama)</span>
+                <span className="metric-val">2-Person</span>
+                <span className="metric-label">High-Impact Engineering Team at Pengwin Solutions</span>
+              </div>
+              <div className="hero-metric-card">
+                <span className="metric-val">Full-Stack &amp; AI</span>
+                <span className="metric-label">React Native, NestJS &amp; LLM Integrations</span>
               </div>
               <div className="hero-metric-card">
                 <span className="metric-val">2.3+ Yrs</span>
-                <span className="metric-label">Mission-Critical Enterprise Distributed Systems</span>
+                <span className="metric-label">Shipping Production Mobile &amp; Backend Systems</span>
               </div>
             </div>
 
             <div className="hero-tech-strip">
               <div className="tech-strip-item">
-                <span className="tech-strip-k">CORE FRAMEWORKS</span>
-                <span className="tech-strip-v">React Native · NestJS · Node.js</span>
+                <span className="tech-strip-k">MOBILE &amp; FRONTEND</span>
+                <span className="tech-strip-v">React Native · Redux Toolkit · TypeScript</span>
               </div>
               <div className="tech-strip-item">
-                <span className="tech-strip-k">AI FOUNDATIONS</span>
-                <span className="tech-strip-v">Claude API · ChatGPT · Ollama Edge</span>
+                <span className="tech-strip-k">BACKEND &amp; APIS</span>
+                <span className="tech-strip-v">NestJS · Node.js · REST · WebSockets</span>
               </div>
               <div className="tech-strip-item">
-                <span className="tech-strip-k">DATA &amp; CLOUD</span>
-                <span className="tech-strip-v">PostgreSQL · Python ETL · Power BI</span>
+                <span className="tech-strip-k">AI INTEGRATIONS</span>
+                <span className="tech-strip-v">Claude API · ChatGPT · Local Ollama</span>
               </div>
               <div className="tech-strip-item">
-                <span className="tech-strip-k">SECURITY &amp; TELEMETRY</span>
-                <span className="tech-strip-v">Cryptographic JWT · RBAC · WebSockets</span>
+                <span className="tech-strip-k">SECURITY &amp; DATA</span>
+                <span className="tech-strip-v">JWT &amp; RBAC · PostgreSQL · Power BI</span>
               </div>
             </div>
           </div>
         </header>
-
-        {/* ---------- STATS ---------- */}
-        <section className="section stats-wrap">
-          <div className="container stats reveal glass">
-            {STATS.map((s) => (
-              <div className="stat" key={s.label}>
-                <Counter
-                  className="stat-value grad"
-                  end={s.end}
-                  decimals={s.decimals || 0}
-                  prefix={s.prefix || ''}
-                  suffix={s.suffix || ''}
-                />
-                <div className="stat-label">{s.label}</div>
-              </div>
-            ))}
-          </div>
-        </section>
 
         {/* ---------- ABOUT ---------- */}
         <section id="about" className="section">
           <div className="container about-grid">
             <Portrait />
             <div className="reveal">
-              <p className="kicker">01 — Engineering Profile</p>
+              <p className="kicker">
+                01 — Engineering Profile
+                <DeepLinkAnchor id="about" onCopy={handleCopyDeepLink} />
+              </p>
               <h2 className="section-title">
                 AI-native architecture, full-stack engineering precision.
               </h2>
               <p className="prose">
-                I am <strong>Jagadesh Nethinti</strong>, a <strong>Professional Mobile App Developer &amp; Senior Full-Stack AI Systems Engineer</strong> with <span className="hl">2.3+ years</span> of
-                rigorous production experience architecting and deploying <span className="hl">17+ mobile client systems</span> and
-                backend microservices utilizing <strong>React Native, NestJS, and Node.js</strong>.
-                Operating as the primary core engineer on a high-velocity 2-person team at Pengwin Solutions, I spearhead
-                end-to-end distributed system architecture, database schema design, and production client applications.
+                I am <strong>Jagadesh Nethinti</strong>, a <strong>Full-Stack Mobile App Developer &amp; AI Engineer</strong> with <span className="hl">2.3+ years</span> of
+                production experience building and deploying <span className="hl">11+ production mobile applications</span> and
+                backend services using <strong>React Native, NestJS, and Node.js</strong>.
+                Operating as a core engineer on a 2-person team at Pengwin Solutions since 2024, I handle
+                the full product lifecycle: mobile architecture, database design, backend APIs, and store releases.
               </p>
               <p className="prose">
-                My technical specialization focuses on integrating enterprise foundation models into live production workflows:
-                orchestrating Anthropic Claude &amp; OpenAI ChatGPT APIs, engineering multi-turn context guardrails,
-                deploying local quantized inference via Ollama &amp; Hugging Face, and delivering zero-hallucination conversational agents.
-                Across 11+ verified production applications on Google Play (including Lisa Social Commerce, the Hailo Cabs Mobility Ecosystem, Socialpost Telecaller, the Portda Maritime Ecosystem, Simhadri Transport Freight Ecosystem,
-                Serum Healthcare, CarHive, and AskrDukan), I have implemented real-time WebSockets telemetry, sub-second GPS tracking, and cryptographic JWT authorization.
+                I focus on building practical, high-performance software: connecting LLM APIs (Claude and ChatGPT)
+                into live workflows with prompt guardrails grounded against structured SQL databases, running local models with Ollama,
+                and shipping reliable mobile experiences on Google Play (Hailo Cabs, Portda Maritime, SM Lorry Freight,
+                Lisa Social Commerce, Serum Healthcare, and ScreenTime).
               </p>
               <p className="prose">
-                In tandem with core systems engineering, I bridge software architecture with quantitative intelligence — formulating analytical SQL models
-                (window functions, recursive CTEs), high-throughput Python (Pandas/NumPy) transformation pipelines, and executive Power BI dimensional reporting.
-                This unified data-driven paradigm directly accelerates product outcomes, such as discovering that SUV inventory drove <span className="hl">35% of platform gross revenue</span>.
+                Alongside mobile and backend engineering, I analyze application data to drive business decisions — using SQL
+                (window functions, CTEs), Python, and Power BI dashboards. For example, my analysis of vehicle booking data surfaced that SUVs drove <span className="hl">35% of platform gross revenue</span>, directly guiding fleet pricing and expansion strategy.
               </p>
               <ul className="chips">
                 <li>Claude &amp; ChatGPT APIs</li>
                 <li>Local LLMs &amp; Ollama</li>
                 <li>NestJS Microservices</li>
                 <li>React Native Architecture</li>
-                <li>Context &amp; Prompt Engineering</li>
+                <li>Grounded Prompt Engineering</li>
                 <li>PostgreSQL &amp; Spatial Telemetry</li>
-                <li>Cryptographic JWT &amp; RBAC</li>
-                <li>Executive BI &amp; Python ETL</li>
+                <li>JWT &amp; RBAC</li>
+                <li>Production BI &amp; Python ETL</li>
               </ul>
             </div>
           </div>
         </section>
 
         {/* ---------- DASHBOARDS ---------- */}
-        <Dashboards />
+        <Dashboards onCopyDeepLink={handleCopyDeepLink} />
 
         {/* ---------- SKILLS ---------- */}
         <section id="skills" className="section">
           <div className="container">
-            <p className="kicker reveal">03 — Core Competencies</p>
+            <p className="kicker reveal">
+              03 — Core Competencies
+              <DeepLinkAnchor id="skills" onCopy={handleCopyDeepLink} />
+            </p>
             <h2 className="section-title reveal">Technical Architecture &amp; Engineering Stack</h2>
             <div className="skill-grid">
               {SKILLS.map((g, i) => (
@@ -1964,7 +2066,10 @@ export default function App() {
         {/* ---------- EXPERIENCE ---------- */}
         <section id="experience" className="section">
           <div className="container">
-            <p className="kicker reveal">04 — Professional Experience</p>
+            <p className="kicker reveal">
+              04 — Professional Experience
+              <DeepLinkAnchor id="experience" onCopy={handleCopyDeepLink} />
+            </p>
             <h2 className="section-title reveal">Engineering Track Record &amp; Impact</h2>
             <div className="timeline">
               {EXPERIENCE.map((job) => (
@@ -1993,7 +2098,10 @@ export default function App() {
           <div className="container">
             <div className="projects-header-row">
               <div>
-                <p className="kicker reveal">05 — Production Systems</p>
+                <p className="kicker reveal">
+                  05 — Production Systems
+                  <DeepLinkAnchor id="projects" onCopy={handleCopyDeepLink} />
+                </p>
                 <h2 className="section-title reveal">Featured Engineering Deliverables</h2>
               </div>
               <div className="projects-view-toggle reveal">
@@ -2032,7 +2140,10 @@ export default function App() {
         <section id="credentials" className="section">
           <div className="container two-col">
             <div className="reveal">
-              <p className="kicker">06 — Credentials &amp; Academics</p>
+              <p className="kicker">
+                06 — Credentials &amp; Academics
+                <DeepLinkAnchor id="credentials" onCopy={handleCopyDeepLink} />
+              </p>
               <h2 className="section-title">Certifications &amp; Academic Foundation</h2>
             </div>
             <div className="reveal cred-list">
@@ -2074,13 +2185,16 @@ export default function App() {
         <section id="contact" className="section contact">
           <div className="container">
             <div className="contact-box glass reveal">
-              <p className="kicker">07 — Collaboration &amp; Inquiries</p>
+              <p className="kicker">
+                07 — Collaboration &amp; Inquiries
+                <DeepLinkAnchor id="contact" onCopy={handleCopyDeepLink} />
+              </p>
               <h2 className="big-cta">
                 Architecting the Next Generation of <span className="grad">Intelligent Software</span>
               </h2>
               <p className="lede center">
-                Actively considering roles in Senior Full-Stack Engineering, AI Systems Architecture,
-                and High-Scale Mobile Development. Let’s collaborate to build mission-critical, enterprise-grade platforms.
+                Actively considering roles in Full-Stack Mobile Development, AI Systems Engineering,
+                and Backend Architecture. Let’s collaborate to build high-performance, user-focused products.
               </p>
               <div className="contact-actions">
                 <a className="btn primary" href="mailto:jagadeeshnethinti809@gmail.com">
@@ -2090,6 +2204,16 @@ export default function App() {
                 <a className="btn ghost" href="tel:+919392696206">
                   <PhoneIcon size={16} />
                   <span>+91 93926 96206</span>
+                </a>
+                <a
+                  className="btn ghost"
+                  href="https://github.com/jagadeeshnethinti"
+                  target="_blank"
+                  rel="noreferrer"
+                >
+                  <GitHubIcon size={16} />
+                  <span>GitHub Profile</span>
+                  <ExternalLinkIcon size={13} color="var(--accent-primary)" />
                 </a>
                 <a
                   className="btn ghost"
@@ -2109,13 +2233,40 @@ export default function App() {
             </div>
           </div>
           <footer className="footer">
-            <span>© {new Date().getFullYear()} Jagadesh Nethinti · Professional Mobile App Developer &amp; AI Systems Engineer</span>
-            <span>Hyderabad, India · Lead Cross-Platform Mobile Architect</span>
+            <span>© {new Date().getFullYear()} Jagadesh Nethinti · Full-Stack Mobile App Developer &amp; AI Engineer</span>
+            <div className="footer-links">
+              <a
+                href="https://github.com/jagadeeshnethinti"
+                target="_blank"
+                rel="noreferrer"
+                className="footer-link-item"
+              >
+                <GitHubIcon size={14} />
+                <span>GitHub</span>
+              </a>
+              <a
+                href="https://www.linkedin.com/in/jagadesh-nethinti-09364b235"
+                target="_blank"
+                rel="noreferrer"
+                className="footer-link-item"
+              >
+                <LinkedInIcon size={14} />
+                <span>LinkedIn</span>
+              </a>
+            </div>
+            <span>Hyderabad, India</span>
           </footer>
         </section>
       </main>
 
       <ScrollToTop />
+
+      {toastMsg && (
+        <div className="deep-link-toast" role="status" aria-live="polite">
+          <span className="toast-icon">✓</span>
+          <span>{toastMsg}</span>
+        </div>
+      )}
 
       <ProjectModal
         project={activeProject}

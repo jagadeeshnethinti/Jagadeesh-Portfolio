@@ -12,42 +12,6 @@ const REVENUE = [
 ]
 
 function Chart({ type }) {
-  if (type === 'pizza') {
-    return (
-      <>
-        <div className="viz-head">
-          <span>Temporal Order Demand Distribution</span>
-          <span className="viz-tool">Tableau · Behavioral Analytics</span>
-        </div>
-        <svg className="spark tall" viewBox="0 0 300 120" preserveAspectRatio="none">
-          <defs>
-            <linearGradient id="m-pizza" x1="0" y1="0" x2="0" y2="1">
-              <stop offset="0" stopColor="#ff8a5b" stopOpacity="0.45" />
-              <stop offset="1" stopColor="#ff8a5b" stopOpacity="0" />
-            </linearGradient>
-          </defs>
-          <path
-            className="area"
-            d="M0,104 L25,96 L50,64 L75,52 L100,40 L125,58 L150,74 L175,64 L200,46 L225,30 L250,22 L275,42 L300,74 L300,120 L0,120 Z"
-            fill="url(#m-pizza)"
-          />
-          <path
-            className="draw"
-            d="M0,104 L25,96 L50,64 L75,52 L100,40 L125,58 L150,74 L175,64 L200,46 L225,30 L250,22 L275,42 L300,74"
-            fill="none"
-            stroke="#ff8a5b"
-            strokeWidth="2.5"
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            pathLength="1"
-          />
-        </svg>
-        <div className="viz-foot">
-          Demand concentrations at <strong>1:00 PM &amp; 8:00 PM</strong> — critical operational windows leveraged for dynamic dispatch and surge staffing.
-        </div>
-      </>
-    )
-  }
   if (type === 'revenue') {
     return (
       <>
@@ -68,34 +32,6 @@ function Chart({ type }) {
               <span className="bar-val">{v}%</span>
             </div>
           ))}
-        </div>
-      </>
-    )
-  }
-  if (type === 'time') {
-    return (
-      <>
-        <div className="viz-head">
-          <span>ETL Pipeline Turnaround Velocity</span>
-          <span className="viz-tool">Excel · Power Query · VBA Automation</span>
-        </div>
-        <div className="time-body">
-          <div className="col">
-            <div className="col-track">
-              <div className="col-bar manual" style={{ '--h': '100%' }} />
-            </div>
-            <span className="col-label">Manual Pipeline</span>
-          </div>
-          <div className="col">
-            <div className="col-track">
-              <div className="col-bar auto" style={{ '--h': '30%' }} />
-            </div>
-            <span className="col-label">Automated ETL</span>
-          </div>
-          <div className="time-kpi">
-            <span className="kpi-num grad">−70%</span>
-            <span>operational latency reduction</span>
-          </div>
         </div>
       </>
     )
