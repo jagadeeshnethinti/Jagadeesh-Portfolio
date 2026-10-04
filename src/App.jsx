@@ -4,6 +4,7 @@ import Dashboards from './Dashboards.jsx'
 import Counter from './Counter.jsx'
 import ProjectModal from './ProjectModal.jsx'
 import CustomCursor from './CustomCursor.jsx'
+import Chatbot from './Chatbot.jsx'
 import {
   PaletteIcon,
   GooglePlayIcon,
@@ -2272,6 +2273,8 @@ export default function App() {
         project={activeProject}
         onClose={() => setActiveProject(null)}
       />
+
+      <Chatbot />
     </div>
   )
 }
