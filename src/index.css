@@ -4219,6 +4219,7 @@ body.chatbot-open .scroll-to-top-btn {
   background: linear-gradient(90deg, rgba(47, 224, 255, 0.15) 0%, rgba(122, 255, 214, 0.15) 100%);
   border-bottom: 1px solid rgba(47, 224, 255, 0.25);
   animation: speaking-banner-in 0.3s ease;
+  flex-shrink: 0;
 }
 
 @keyframes speaking-banner-in {
@@ -4283,14 +4284,13 @@ body.chatbot-open .scroll-to-top-btn {
 
 /* -------- Messages Body -------- */
 .chatbot-body {
-  flex: 1;
+  flex: 1 1 0;
   overflow-y: auto;
-  padding: 18px 16px;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 14px;
-  min-height: 300px;
-  max-height: 380px;
+  min-height: 0;
   scrollbar-width: thin;
   scrollbar-color: rgba(255, 255, 255, 0.1) transparent;
 }
@@ -4763,7 +4763,7 @@ body.chatbot-open .scroll-to-top-btn {
 /* -------- Speech Listening HUD on top of Input -------- */
 .speech-listening-hud {
   margin: 0 12px 8px;
-  padding: 9px 14px;
+  padding: 8px 12px;
   background: linear-gradient(135deg, rgba(239, 68, 68, 0.15) 0%, rgba(14, 22, 38, 0.95) 100%);
   border: 1px solid rgba(239, 68, 68, 0.4);
   border-radius: 12px;
@@ -4773,6 +4773,7 @@ body.chatbot-open .scroll-to-top-btn {
   gap: 10px;
   animation: speech-hud-enter 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
   box-shadow: 0 4px 20px rgba(239, 68, 68, 0.15);
+  flex-shrink: 0;
 }
 
 @keyframes speech-hud-enter {
@@ -4880,13 +4881,17 @@ body.chatbot-open .scroll-to-top-btn {
   display: flex;
   gap: 8px;
   padding: 12px 14px;
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
-  background: rgba(10, 14, 23, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  background: rgba(10, 14, 23, 0.95);
   align-items: center;
+  flex-shrink: 0;
+  position: relative;
+  z-index: 10;
 }
 
 .chatbot-input {
   flex: 1;
+  min-width: 0;
   padding: 11px 16px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -4979,9 +4984,10 @@ body.chatbot-open .scroll-to-top-btn {
   text-align: center;
   font-family: 'Plus Jakarta Sans', sans-serif;
   font-size: 0.62rem;
-  color: rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.25);
   letter-spacing: 0.02em;
-  background: rgba(10, 14, 23, 0.4);
+  background: rgba(10, 14, 23, 0.95);
+  flex-shrink: 0;
 }
 
 /* -------- Mobile Responsive -------- */
@@ -5030,8 +5036,9 @@ body.chatbot-open .scroll-to-top-btn {
   }
 
   .chatbot-body {
-    min-height: 200px;
-    max-height: calc(85dvh - 200px);
+    flex: 1 1 0;
+    min-height: 0;
+    max-height: none;
   }
 
   .chatbot-chip {

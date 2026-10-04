@@ -601,6 +601,7 @@ export default function Chatbot() {
         ])
       } finally {
         setIsThinking(false)
+        setTimeout(() => inputRef.current?.focus(), 150)
       }
     },
     [isThinking, isOpen, buildConversationHistory, messages.length, voiceReplyEnabled]
